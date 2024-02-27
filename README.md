@@ -1,3 +1,4 @@
 # Obsidian
 
-All my notes for UniMoRe CS course.
+All my notes for UniMoRe Computer Science degree.
+
