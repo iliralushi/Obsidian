@@ -22,5 +22,7 @@ L'obiettivo generale nella programmazione è quello di dare all'utente un messag
 -  Il linguaggio di programmazione permette la codifica di un messaggio esterno in interno.   Minimizza la distanza ma rimane generale.
 -  Il programmatore si occupa di minimizzare la distanza tra messaggio esterno e messaggio interno, diminuire la complessità computazionale del programma e rendere il programma il più ordinato possibile.
 
+AKON
+
 
 
