@@ -1,1 +1,0 @@
-Harambe will live forever
