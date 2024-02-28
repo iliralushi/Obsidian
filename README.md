@@ -1,4 +1,4 @@
 # Obsidian
 
-All my notes for UniMoRe Computer Science degree.
+Tutti i miei appunti per il corso di Laurea in Informatica di UniMoRe.
 
