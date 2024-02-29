@@ -1,7 +1,7 @@
 ***dato = informazione grezza di cui si è già a conoscenza, sono il risultato di codifica delle informazioni.***
 Una **base di dati** è un insieme di dati utilizzato per lo svolgimento di varie attività (di un ente, di un azienda, ufficio, persona...).
 
-Il **sistema informativo** è un elemento di un organizzazione che gestisce le informazioni di interesse. Ogni organizzazione contiene un sistema informativo. E' di supporto ad altri sotto-sistemi, quindi va studiato nel contesto in cui si trova.
+Il **sistema informativo** è un insieme di componenti che gestiscono dati per fornire informazioni ad un organizzazione. Ogni organizzazione contiene un sistema informativo. E' di supporto ad altri sotto-sistemi, quindi va studiato nel contesto in cui si trova.
 
 Il **sistema informatico** è la parte automatizzata del sistema informativo. Nel sistema informativo, le informazioni vengono rappresentate in modo essenziale attraverso i dati.
 
