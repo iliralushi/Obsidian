@@ -1,4 +1,4 @@
-Al passare del tempo un software è diventato sempre più complesso. Deve essere: **protetto, riusabile, documentato, modulare, estendibile.** 
+Al passare del tempo un software è diventato sempre più complesso. Deve essere **protetto, riusabile, documentato, modulare, estendibile.** 
 
 La programmazione funzionale non è adatta per creare questo tipo di software perchè è difficile proteggere tutti i dati, è difficile da mantenere e non è estendibile. Inoltre per i programmi di grande dimensione non è per niente ottimale per due grossi motivi:
 - Un dato è usabile globalmente quando in realtà dovrebbe essere utilizzabile solo da un entità e le sue funzioni.
@@ -25,16 +25,18 @@ Supponiamo di avere un entità studente.
 Certe operazioni **NON** dovrebbero essere ammesse, come la modifica di un voto.
 Se proviamo a creare questa entità in C abbiamo:
 
-`typedef struct Studente`
-`{`
-`char nome[20];`
-`char cognome[20];`
-`int matricola;`
-`int num_esami_dati;`
-`struct esami[29]; char nome[20]; int voto;`
-`}`
+``` C++
+typedef struct Studente
+{
+char nome[20];
+char cognome[20];
+int matricola;
+int num_esami_dati;
+struct esami[29]; char nome[20]; int voto;
+}
+```
 
-Definiamo una funzione nuovo_esame_dato(Studente s, char nome_esame, int voto_preso)
+Definiamo una funzione nuovo_esame_dato(Studente s, char nome_esame, int voto_preso).
 Essa serve per definire un nuovo esame. Così abbiamo la possibilità di fare un operazione che aumenta il nostro voto, s1.esami[num_esame].voto++
 Ovviamente questo non è permesso.
 
