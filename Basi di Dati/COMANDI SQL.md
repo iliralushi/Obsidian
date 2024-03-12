@@ -28,4 +28,4 @@ PREDICATO JOIN (ATTR1 comp ATTR2)
 - Dove ATTR1 appartiene alla tabella 1, ATTR2 appartiene alla tabella 2, comp invece è un operatore logico.
 
 PRIORITÀ DEGLI OPERATORI
-
+- 
