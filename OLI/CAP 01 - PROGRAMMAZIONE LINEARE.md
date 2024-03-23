@@ -52,7 +52,6 @@ Soluzione grafica dell'esercizio del falegname:
 
 ---
 
-
 Una funzione lineare obiettivo è una funzione del tipo z = 80x + 70y.
 Genericamente si può esprimere come f(x1, x2, xn).
 
