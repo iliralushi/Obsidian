@@ -78,6 +78,7 @@ Ci possono essere più chiavi per la stessa entità.
 - ES: Albergo, una chiave è hotel_id, un attributo chiave composto che comprende nome e località. Un'altra chiave può essere un codice_hotel che è un numero che identifica l'hotel. Entrambi gli attributi rispettano i requisiti per essere attributi chiave.
 
 **SCHEMA ESERCIZIO 1**
+
 ![[Schema Agenzia di Viaggi.png]]
 
 
