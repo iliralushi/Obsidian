@@ -48,7 +48,7 @@ La soluzione ideale si trova visivamente. Possiamo spostare la nostra retta fino
 
 Soluzione grafica dell'esercizio del falegname:
 
-![[Obsidian/OLI/PNG/1 - FALEGNAME.png]]
+![[1 - FALEGNAME.png]]
 
 ---
 

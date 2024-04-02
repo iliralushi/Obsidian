@@ -1,15 +1,14 @@
 **FASI PROGETTAZIONE BASE DI DATI**
 La progettazione di una base di dati si inserisce nel ciclo di vita del sistema informativo.
 Comprende le seguenti attività:
-- RACCOLTA & ANALISI DEI REQUISITI
-- PROGETTAZIONE
-- REALIZZAZIONE
-- VALIDAZIONE & COLLAUDO
-- FUNZIONAMENTO
+- Raccolta ed analisi dei requisiti
+- Progettazione
+- Realizzazione
+- Validazione e collaudo
+- Funzionamento
 
 **ANALISI DEI REQUISITI**
-Lo scopo è produrre una descrizione informale della nostra progettazione descrivendo i dati e le operazioni che essi subiscono.
-Richiede uno studio preliminare su:
+Lo scopo è produrre una descrizione informale della nostra progettazione descrivendo i dati e le operazioni che essi subiscono. Richiede uno studio preliminare su:
 - Chi utilizzerà il nostro sistema
 - Quali attività deve svolgere il nostro sistema
 - Quanto tempo si impiegherà per implementare ogni funzionalità
@@ -30,7 +29,7 @@ Richiede uno studio preliminare su:
 - Si verifica la completezza e la consistenza delle specifiche
 
 **PROGETTAZIONE CONCETTUALE**
-Ha lo scopo di tradurre ciò che abbiamo tratto dall'analisi dei requisiti in una **DESCRIZIONE FORMALE** che dovrà essere indipendente dal DBMS. Fa riferimento al **MODELLO CONCETTUALE.**
+Ha lo scopo di tradurre ciò che abbiamo tratto dall'analisi dei requisiti in una descrizione formale che dovrà essere indipendente dal DBMS. Fa riferimento al modello concettuale.
 
 **SCHEMA CONCETTUALE**
 Rappresentazione semplificata di una base di dati che contiene soltanto le informazioni essenziali
