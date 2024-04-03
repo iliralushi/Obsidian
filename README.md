@@ -1,4 +1,4 @@
 # Obsidian
 
-All my notes for Unimore CS course.
+I miei appunti del corso di Informatica Unimore.
 
