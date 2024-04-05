@@ -1,5 +1,5 @@
 **OOP**
-Per programmi di complessità elevata è la soluzione migliore. Offre un livello alto di astrazione, una maggiore protezione dei dati e un facile riutilizzo del codice già scritto. Usa entità che lega dati e operazioni assieme. Gli esempi riportati sotto non permettono di fare operazioni illegali.
+Per software di complessità elevata è la soluzione migliore. Offre un livello alto di astrazione, una maggiore protezione dei dati e un facile riutilizzo del codice già scritto. Usa entità che lega dati e operazioni assieme. Gli esempi riportati sotto non permettono di fare operazioni illegali.
 
 ```                                                                          Java
 ADTDef Contatore {
@@ -25,18 +25,21 @@ ADTDef Persona {
 			ERRORE;
 	}
 }
+
+Persona p;
+p.setEtà(21); // OK!
+p.setEtà(-2); // Errore, l'età di p rimane invariata.
 ```
 
-Se provo a fare un operazione illegale del tipo setEtà(-2) mi ritorna errore, non rendendolo possibile, se ho definito la mia età prima essa rimane quella.
-
 **PROTEZIONE DEI DATI**
-Il controllo delle variabili è incluso nelle entità, non farà il controllo ogni volta che si modifica il valore della variabile. Inoltre il controllo può essere modificato senza dover cambiare il resto del software.
+Il controllo delle variabili è incluso nelle entità e viene codificato li, altrimenti si dovrebbe fare il controllo per ogni istanza di entità. Inoltre il controllo può essere modificato senza dover cambiare il resto del software.
 
 **OGGETTI**
 ```                                                                          Java
-	Contatore cont;
+Contatore cont;
 ```
-"cont" è un oggetto, quindi un entità che incapsula dati e operazioni. È un entità software che modella oggetti reali, è composto da stato ed interfaccia, unisce dati assieme ed è un ADT.
+
+È un entità software che modella oggetti reali, incapsula dati e codice. È composto da stato ed interfaccia, unisce dati assieme ed è un istanza di ADT.
 
 **STATO**
 Contiene informazioni sullo stato dell'oggetto, è nascosto dall'esterno ed è composto da un insieme di attributi (variabili). Può anche essere composto da oggetti.
@@ -46,28 +49,32 @@ L'interfaccia è composta dalle operazioni che possono accedere agli attributi d
 
 **CLASSI**
 Gli oggetti possono avere struttura uguale.
-Una classe descrive la struttura comune a più oggetti in termini di attributi e metodi, i valori dei singoli oggetti possono essere diversi. È un ADT e "serve per creare oggetti".
+Una classe descrive la struttura comune a più oggetti in termini di attributi e metodi, i valori dei singoli oggetti possono essere diversi. È un ADT e i suoi dati e le operazioni disponibili derivano dalla classe.
 
 **CLASSI E OGGETTI**
-Le classi vengono definite staticamente dal programmatore, gli oggetti sono dinamicamente creati a tempo di runtime. Gli oggetti possono essere considerati come server che mettono a disposizione servizi.
+Le classi vengono definite staticamente dal programmatore, gli oggetti sono dinamicamente creati a tempo di runtime. Gli oggetti possono essere considerati come server che mettono a disposizione servizi. Ogni operazione invocabile dall'esterno è considerato come un servizio messo in atto dall'oggetto.
 
-**MODELLO CLIENT-SERVER**
-NON chiama una funzione che agisce su una determinata entità MA chiedi all'entità di svolgere un servizio. 
-- Client: Richiede il servizio, conosce il server, NON possono accedere direttamente ai vari metodi.
-- Server: Fornisce il servizio, NON conosce il client.
-- 
+**COME UN OGGETTO VIENE MODIFICATO**
+NON viene chiamata una funzione che agisce su una determinata entità MA viene chiesto all'entità di svolgere un servizio.
+
 ![[Differenza Funzioni tra OOP e Procedurale.png]]
 
-**CLASSE**
+**IN BREVE...**
 - Classificazione: Insiemi di oggetti che possono condividere lo stesso comportamento.
-- Classe: Entità descrittiva che raggruppa tutti gli attributi e i metodi che caratterizzano un insieme di oggetti.
+- Classe: Entità che raggruppa lo stato e le definizioni. Essa determina cosa può fare un oggetto.
 - Oggetto: Istanza di una classe.
 
-**OGGETTO DI UNA CLASSE**
-C'è una forte dipendenza tra classe ed oggetto, la relazione tra di loro perdura per tutta la vita del programma, l'istanza ritrova nella classe il codice da eseguire se richiesto.
+**CLASSE - OGGETTO**
+C'è una forte dipendenza tra classe ed oggetto, la relazione tra di loro dura per tutta la vita del programma, l'istanza ritrova nella classe il codice da eseguire se richiesto.
 - Variabili di istanza: Ogni istanza ne possiede una copia, l'esistenza è legata all'esistenza dell'istanza.
 - Variabili di classe: Sono condivise da tutte le istanze, esistono indipendentemente dall'esistenza di un oggetto.
 - Metodi di classe/istanza.
+
+**NOTA SU COME FUNZIONA LA OOP**
+- Gli oggetti vengono creati quando servono dinamicamente, non si ha una dichiarazione generale di tutte le variabili come in C.
+- Gli oggetti devono conoscersi in qualche modo. il client deve conoscere il server siccome richiede il servizio. Lo si fa attraverso dei riferimenti.
+- Un oggetto che crea un altro oggetto conosce il suo indirizzo.
+- Un oggetto che non ha creato un altro oggetto deve conoscere il suo indirizzo per interagire.
 
 **INTRODUZIONE CONCETTI BASE OOP**
 - Incapsulamento: Ogni oggetto incapsula dati ed operazioni, ogni oggetto protegge i suoi dati dall'esterno. Solo l'oggetto può manipolare i dati che contiene.

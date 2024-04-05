@@ -26,12 +26,15 @@ int esami_dati;
 Studente s1; // ADT
 ```
 
+**PROBLEMA IN C**
+In C non agiamo sulle entità ma nei vari tipi di dato. Questo non ci permette di proteggere i nostri dati, possiamo benissimo invocare delle funzioni sui nostri campi che noi non abbiamo pianificato.
+- Esempio: Contatore, noi possiamo benissimo decrementare anche se non è previsto.
+
 **ASTRAZIONI DI DATO IN C**
-Prendiamo C, un linguaggio tradizionale. Possiamo scomporre il nostro software in vari file utilizzando i moduli, ogni file rappresenta un entità. Per proteggere i dati invece possiamo sfruttare le classi di memorizzazioni che indicano il tipo di area di memoria in cui un entità viene memorizzata. Esse sono auto, register, static, extern.
+Abbiamo bisogno di scomporre il nostro software e proteggere i dati.
+- Possiamo scomporre il nostro software in vari file utilizzando i moduli, ogni file può rappresentare un entità.
+- Possiamo proteggere i dati sfruttando le classi di memorizzazioni che indicano il tipo di area di memoria in cui un entità viene memorizzata. Esse sono auto, register, static, extern.
 
 **LIMITI DELLA PROGRAMMAZIONE TRADIZIONALE**
-Un linguaggio tradizionale non è ottimale perchè per poter proteggere i dati in modo completo dobbiamo fare uso di casting e puntatori, inoltre se vogliamo riusare il codice dobbiamo per forza riscriverlo, perdendo efficienza e semplicità.
-
-Prendendo l'esempio di un contatore:
-- Usando un astrazione di dato abbiamo che il nostro contatore è protetto e svolge le operazioni che abbiamo definito, però possiamo definire una sola istanza di contatore per tutto il nostro programma.
-- Usando un ADT abbiamo che possiamo definire più istanze di contatore però non sono protette, inoltre usiamo puntatori che sono pesanti.
+- Usando un astrazione di dato abbiamo che il nostro contatore è protetto e svolge le operazioni che abbiamo definito, però possiamo definire una sola istanza di contatore per tutto il nostro programma, inoltre non possiamo definire più oggetti contatore.
+- Usando un ADT abbiamo che possiamo definire più istanze di contatore però non sono protette, inoltre dobbiamo passare puntatori.
