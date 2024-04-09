@@ -35,11 +35,11 @@ p.setEtà(-2); // Errore, l'età di p rimane invariata.
 Il controllo delle variabili è incluso nelle entità e viene codificato li, altrimenti si dovrebbe fare il controllo per ogni istanza di entità. Inoltre il controllo può essere modificato senza dover cambiare il resto del software.
 
 **OGGETTI**
-```                                                                          Java
-Contatore cont;
-```
-
 È un entità software che modella oggetti reali, incapsula dati e codice. È composto da stato ed interfaccia, unisce dati assieme ed è un istanza di ADT.
+
+```                                                                          Java
+Contatore cont; // oggetto
+```
 
 **STATO**
 Contiene informazioni sullo stato dell'oggetto, è nascosto dall'esterno ed è composto da un insieme di attributi (variabili). Può anche essere composto da oggetti.
