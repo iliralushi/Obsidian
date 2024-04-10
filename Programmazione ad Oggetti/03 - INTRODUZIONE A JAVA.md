@@ -80,6 +80,7 @@ else
 
 ```                                                                 Java
 // Viene eseguito il blocco corrispondente alla variabile.
+
 // Se non viene messo il break vengono eseguiti tutti i blocchi dal valore della variabile fino al prossimo break o alla fine.
 
 String day = "Monday";
@@ -129,8 +130,8 @@ while (i < 10)
 **FUNZIONI**
 
 ```                                                                 Java
-// In Java si chiamano METODI.
-// Possono essere definiti SOLO dentro una classe.
+// In Java si chiamano metodi.
+// Possono essere definiti solo dentro una classe.
 // Possono esistere metodi con lo stesso nome ma parametri diversi.
 
 int somma (int a, int b)
@@ -140,9 +141,11 @@ int somma (int a, int b)
 **CLASSE**
 
 ```                                                                 Java
-// Insieme di variabili (stato) e di metodi (interfaccia).
-// ADT, definisce tutti i metodi e le variabili comuni a tutti gli oggetti di un certo tipo.
-// Si creano oggetti usando la keyword "new".
+// Insieme di stato e metodi.
+// È un Abstract Data Type.
+// Definisce lo stato e i metodi di un oggetto di una classe.
+// Si creano oggetti usando la keyword new.
+// Esistono classi Wrapper che permettono di usare tipi primitivi come oggetti.
 
 class Contatore
 {
@@ -159,20 +162,19 @@ class Contatore
 
 **COSTRUTTORE**
 
-```                                                                 Java
-// Il costruttore è un metodo speciale che viene chiamato quando
-// si crea un oggetto della classe.
-// Esso serve per inizializzare l'oggetto.
+```                                                                          Java
+// È un metodo speciale che viene chiamato quando si crea un oggetto
+// di una classe specifica. Inizializza l'oggetto stesso.
+// Ha lo stesso nome della classe e non ha valore di ritorno.
+// Possono essere più di uno se differenziati dal numero/tipo di parametri.
 
-	public Contatore() { val = 0; }
-
-// Ha lo stesso nome della classe, non ritorna niente, più di uno se differenziati dal numero/tipo di parametri.
+public Contatore() { val = 0; }
 ```
 
 **CREAZIONE DELL'OGGETTO IN MEMORIA**
 
-```                                                                 Java
-// cont è una variabile che contiene un riferimento in memoria 
+```                                                                          Java
+// cont in questo esempio contiene un riferimento ad un area di memoria
 // in cui è contenuto il nostro oggetto.
 
 Contatore cont;
@@ -181,17 +183,85 @@ cont = new Contatore();
 
 **ESECUZIONE DI UN PROGRAMMA**
 
-```                                                                 Java
-// L'esecuzione di un programma parte da un metodo main.
-// Questo metodo può creare oggetti ed invocare i metodi.
+```                                                                          Java
+// Parte dal metodo citato qui sotto. Il metoodo in questione può
+// creare oggetti ed invocare i metodi.
 
 public static void main(String args[])
 
-// Un sorgente java viene compilato con javac. Produce un file
-// Che contiene il bytecode della classe con estensione .class
+// Viene creato un sorgente .class in bytecode attraverso il compilatore.
 javac nomefile.java
 
-// Per eseguire bisogna invocare l'interprete java con il nome della CLASSE che contiene il metodo main.
+// L'interprete esegue il sorgente con la classe che contiene il main.
 java nomeclasse
 ```
 
+**COMPILATORE VS INTERPRETE IN JAVA**
+
+```                                                                          Java
+// Java li usa entrambi.
+// Usa il compilatore javac per creare il sorgente in formato bytecode.
+// Usa l'interprete JVM per eseguire il sorgente.
+// In questo modo si ha velocità nell'eseguire il programma e una
+// buona portabilità.
+```
+
+**STRINGHE**
+
+```                                                                          Java
+// Le stringhe in Java sono oggetti, istanze della classe String.
+// Non sono un buffer modificabile, per questo bisogna usare il tipo
+// Stringbuffer.
+
+String s = "ciao"; // viene creato un oggetto di tipo string con valore ciao.
+String s = "ciao" + " " + "pippo"; // concatenare stringhe con operatore +.
+
+String s = "Nel mezzo del cammin";
+char ch = charAt(4) // valore di ch è "m".
+```
+
+**METODI STRINGHE**
+
+```                                                                          Java
+char charAt(int index) // restituisce il carattere in quella posizione.
+boolean endsWith(String suffix) // vero se finisce con quella stringa.
+boolean beginsWith(String prefix) // vero se inizia con quella stringa.
+boolean equals(Object other) // vero se la stringa è uguale a other.
+String substring(int beginidx) // restituisce una stringa che parte dall'indice beginidx fino alla fine.
+String substring(int beginidx, int endidx) // restituisce una stringa che parte dall'indice beginidx e finisce ad endidx.
+int length() // restituisce la lunghezza della stringa.
+String toLowerCase() // rende la stringa tutta minuscola.
+String toUpperCase() // rende la stringa tutta maiuscola.
+```
+
+**ARRAY**
+
+```                                                                         Java 
+// Gli array in Java sono oggetti. Sono identificati dall'operatore [].
+// Definire un array definisce un riferimento. Per crearlo usare new.
+
+int[] v1 = {8, 12, 3, 4}; // array statico, già definito
+
+int[] v2;
+v2 = new int[5] // crea 5 celle di tipo int, inizializzate a zero
+
+String v1[];
+v1 = new String[2]; // crea 2 riferimenti ad oggetto, inizializzati a null
+v1[0] = "Hello World!"; // stringa statica
+v1[1] = new String("Ciao n." + 2) // stringa dinamica
+
+Contatore cont[]
+cont = new Contatore[3]; // 3 riferimenti a Contatore, inizializzati a null
+
+cont[0] = new Contatore(0); // valore 0
+cont[1] = new Contatore(100); // valore 100
+cont[2] = null; // non inizializzato
+```
+
+**DOCUMENTAZIONE**
+
+```                                                                         Java 
+// È possibile creare commenti con /**, verranno interpretati come
+// informazioni da inserire in documentazione.
+// Javadoc crea pagine HTML di documentazione.
+```
