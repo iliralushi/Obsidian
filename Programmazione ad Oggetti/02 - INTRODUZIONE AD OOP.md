@@ -76,8 +76,3 @@ C'è una forte dipendenza tra classe ed oggetto, la relazione tra di loro dura p
 - Un oggetto che crea un altro oggetto conosce il suo indirizzo.
 - Un oggetto che non ha creato un altro oggetto deve conoscere il suo indirizzo per interagire.
 
-**INTRODUZIONE CONCETTI BASE OOP**
-- Incapsulamento: Ogni oggetto incapsula dati ed operazioni, ogni oggetto protegge i suoi dati dall'esterno. Solo l'oggetto può manipolare i dati che contiene.
-- Ereditarietà: Una classe può derivare da un altra classe, estendendola e specializzandola. La classe figlia eredita gli attributi e i metodi dalla classe padre. La classe figlia aggiunge i propri attributi ed istanze. È molto utile per riscrivere codice in modo efficiente.
-- Polimorfismo: Alla stessa richiesta di operazione è possibile che possano corrispondere a comportamenti diversi.
-

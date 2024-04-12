@@ -6,8 +6,8 @@
 - Le versioni di Java e JDK sono diverse tra loro.
 
 **TIPI PRIMITIVI**
-
-```                                                                 Java
+ 
+```                                                                          Java
 byte, short, int, long, float, double, char (16 bit), boolean
 ```
 
@@ -264,4 +264,145 @@ cont[2] = null; // non inizializzato
 // È possibile creare commenti con /**, verranno interpretati come
 // informazioni da inserire in documentazione.
 // Javadoc crea pagine HTML di documentazione.
+```
+
+**PACKAGES**
+
+```                                                                         Java 
+// Corrispondono a contenitori fisici di file .class. Un package
+// logicamente raggruppa le classi adatte insieme. Sono anche ricorsivi,
+// quindi contengono sottoclassi.
+
+package utilità -> // cartella che comprende la classe Contatore e Data
+utilità.Contatore o utilità.Data // nuovo nome della classe
+utilità.Contatore c1 = new utilità.Contatore() // creazione oggetto
+
+// Bisogna fare attenzione in fase di compilazione.
+$ java utilità.Contatore // esegue main della classe Contatore, package utilità
+
+import utilità.Contatore // importa la classe del package su un altro file
+Contatore c1 = new Contatore(); // possibile se si importa la classe
+
+import utilità.*; // importa tutte le classi della directory (* non è ricorsivo)
+
+package utilità // per inserire una classe in un package
+public class Contatore // basta specificare la direttiva package nomePackage
+{
+	...
+}
+
+package utilità.file // per inserire una classe in un sottopackage
+public class Contatore // package nomePackage nomeSottoPackage
+{
+	...
+}
+
+// Questi sono package di default, vengono inseriti nella directory corrente.
+// Tutte le entità definite senza modificatori (public, private) sono visibili
+// solo nel package.
+```
+
+**VARIABILI DI CLASSE**
+
+```                                                                         Java 
+// Variabili definite attraverso la keyword static. Esistono
+// indipendentemente dall'esistenza di oggetti di quella classe.
+
+class Esempio
+{
+	private static int x = 0;
+	...
+}
+```
+
+**METODI DI CLASSE**
+
+```                                                                         Java 
+// Metodi definiti attraverso la keyword static. Esistono
+// indipendentemente dall'esistenza di oggetti di quella classe.
+// Possono essere invocati anche senza la creazione di un oggetto della classe.
+// Possono accedere solo a variabili di classe.
+// Un esempio è il metodo main.
+
+class Esempio
+{
+	public static void prova() { System.out.print("ciao"); }
+}
+
+Esempio.prova(); // valido dall'interno
+```
+
+**COSTANTI**
+
+```                                                                         Java 
+// Sono etichettate con la keyword final.
+// Tipicamente variabili statiche di classe, ma anche locali.
+
+class EsempioCostanti
+{
+	private static final int max = 8; // costante di classe
+	void metodo() { final float radiceDi2 = 1.4142F } // costante locale
+}
+```
+
+**RIFERIMENTI AD OGGETTI**
+
+```                                                                         Java 
+// Le variabili di tipo riferimento contengono un riferimento ad
+// un oggetto.
+
+Contatore p1 = new Contatore();
+Contatore p2 = p1; // non duplica p1 ma copia il suo riferimento
+p2.inc(); // vale anche per p1, puntano allo stesso oggetto
+System.out.print(p1.getVal()); // stampa 1
+```
+
+**CLONAZIONE DI OGGETTI**
+
+```                                                                         Java 
+// Per copiare un oggetto bisogna usare il metodo clone()
+
+Contatore p1 = new Contatore();
+Contatore p2 = (Contatore)p1.clone(); // copiato
+p2.inc();
+System.out.println(p1.getVal()) // stampa 0, non ha copiato il riferimento
+```
+
+**PASSAGGIO DEI PARAMETRI**
+
+```                                                                         Java 
+// Tutti i parametri sono passati per riferimento.
+// Se di tipo primitivo viene passato per valore.
+// Se di tipo riferimento viene pasasato per indirizzo.
+```
+
+**CONFRONTO TRA OGGETTI**
+
+```                                                                         Java 
+// Bisogna usare il metodo equals(). Non possiamo paragonare due
+// riferimenti, in quel caso restituisce true se entrambi i riferimenti
+// puntano allo stesso oggetto.
+```
+
+**GARBAGE COLLECTOR**
+
+```                                                                         Java 
+// È un componente dell'interprete, si occupa di liberare automaticamente
+// memoria dinamica una volta che non è più accessibile.
+```
+
+**KEYWORD THIS**
+
+```                                                                         Java 
+// Parola chiave che serve per indicare l'oggetto stesso che sta eseguendo
+// il codice. Riferimento ad istanza di oggetto.
+// Serve per specificare variabili/metodi di istanza.
+// Serve per chiamare costruttori della stessa classe.
+
+class Contatore
+{
+	private int val;
+	public Contatore(int val) { this.val = val; }
+	public Contatore() { this(0); }
+}
 ```
