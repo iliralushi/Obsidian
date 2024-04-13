@@ -1,22 +1,24 @@
-**PERCHÈ USARE LA PROGRAMMAZIONE AD OGGETTI**
-La programmazione ad oggetti supera i limiti della programmazione tradizionale, offrendo un paradigma di programmazione che permette di proteggere i dati, riusare codice in modo più intelligente, essere molto più mantenibile rispetto ad un paradigma non-OOP e astrarre ad ad altissimo livello.
-- A livello di progetto possiamo pensare al nostro software come una serie di entità.
-- A livello di implementazione possiamo identificare le funzioni che agiscono sulle entità e proteggerle dalle altre funzioni.
+**COSA DEVE FARE UN LINGUAGGIO DI PROGRAMMAZIONE**
+Siccome le esigenze e le aspettative del software crescono di giorno in giorno, serve un paradigma di programmazione che permette di gestire con facilità programmi di medie e grandi dimensioni, inoltre il nostro software dev'essere protetto, riusabile, documentato, modulare ed estendibile.
+Questo è ciò che offre la OOP a differenza della programmazione tradizionale.
 
 ![[OOP.png]]
 
+**PARADIGMA OOP**
+- A livello di progetto deve pensare il progetto come una serie di entità ben definite e complesse.
+- A livello di implementazione deve identificare le funzioni che agiscono sui dati e proteggerli da altre funzioni.
+
 **ASTRAZIONE DI DATO**
-Una astrazione di dato è un entità astratta che modella un entità del mondo reale. È definita da attributi (dati) e operazioni (funzioni). Tipicamente gli attributi non sono accessibili dall'esterno mentre le operazioni si e possono accedere agli attributi dell'entità stessa (in modo controllato).
-- Agevola la modularità accoppiando dati e funzioni.
-- Favorisce il controllo sull'integrità dei dati.
-- Favorisce la creazione di componenti "autonomi" e validati.
+È un entità astratta che modella i dati del mondo reale. È definita da attributi e metodi.
+Gli attributi tipicamente non sono accessibili dall'esterno mentre i metodi si, e accedono agli attributi dell'entità stessa.
+- Questa aiuta a modulare il programma e proteggere i dati che vogliamo proteggere.
 
 **ABSTRACT DATA TYPE**
-Un abstract data type è simile all'astrazione di dato però non è un entità, bensì un tipo da cui puoi derivare entità concrete che hanno tutte la stessa struttura in termini di attributi e operazioni.
+Un ADT è simile ad un astrazione di dato. Non è un entità ma è un tipo di dato da cui possiamo derivare entità concrete che avranno la struttura della nostra astrazione di dato.
 
-```                                                                     c++ 
+```                                                                            C++ 
 // esempio
-typedef struct Studente {
+typedef struct Studente { // astrazione di dato
 char nome[20];
 char cognome[20];
 int matricola;
@@ -26,15 +28,16 @@ int esami_dati;
 Studente s1; // ADT
 ```
 
-**PROBLEMA IN C**
-In C non agiamo sulle entità ma nei vari tipi di dato. Questo non ci permette di proteggere i nostri dati, possiamo benissimo invocare delle funzioni sui nostri campi che noi non abbiamo pianificato.
-- Esempio: Contatore, noi possiamo benissimo decrementare anche se non è previsto.
+**PROBLEMA PROGRAMMAZIONE TRADIZIONALE**
+Nella programmazione tradizionale non agiamo sulle entità, ma agiamo sui tipi di dato.
+Questo non ci permette di proteggere i nostri dati dall'esterno.
+- In C possiamo prendere un contatore e decrementarlo anche se non è pianificato.
 
-**ASTRAZIONI DI DATO IN C**
-Abbiamo bisogno di scomporre il nostro software e proteggere i dati.
-- Possiamo scomporre il nostro software in vari file utilizzando i moduli, ogni file può rappresentare un entità.
-- Possiamo proteggere i dati sfruttando le classi di memorizzazioni che indicano il tipo di area di memoria in cui un entità viene memorizzata. Esse sono auto, register, static, extern.
+**ASTRAZIONI DI DATO IN LINGUAGGI TRADIZIONALI**
+Per poter fare ciò dobbiamo fare due cose; scomporre il software in entità e proteggere i dati.
+- Per scomporre il software possiamo dividere il nostro programma in moduli.
+- Per proteggere i nostri dati possiamo sfruttare le classi di memorizzazioni, che indicano l'area di memoria in cui un entità viene memorizzata e definiscono tempo di vita e visibiltà. Questo vale sia per le variabili che le funzioni e sono 4; auto, register, static, extern.
 
 **LIMITI DELLA PROGRAMMAZIONE TRADIZIONALE**
-- Usando un astrazione di dato abbiamo che il nostro contatore è protetto e svolge le operazioni che abbiamo definito, però possiamo definire una sola istanza di contatore per tutto il nostro programma, inoltre non possiamo definire più oggetti contatore.
-- Usando un ADT abbiamo che possiamo definire più istanze di contatore però non sono protette, inoltre dobbiamo passare puntatori.
+- Usando un astrazione di dato abbiamo che i nostri dati sono protetti, però è possibile avere una sola istanza di oggetto.
+- Usando un ADT abbiamo che possiamo creare infinite istanze di oggetto, però possiamo accedere ai dati all'esterno.

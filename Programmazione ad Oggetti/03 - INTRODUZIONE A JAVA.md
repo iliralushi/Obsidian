@@ -1,8 +1,9 @@
 **CARATTERISTICHE JAVA**
-- Linguaggio imperativo, ad oggetti ed interpretato.
-- L'utente può allocare memoria dinamica usando la keyword new. La deallocazione è svolta dal garbage collector.
-- Ambiente di sviluppo JDK, compilatore javac, interprete JVM, debugger jdb. Contiene numerose librerie quali per I/O, GUI, database...
-- JRE è il Java Runtime Enviroment, serve SOLO per eseguire il software.
+- Linguaggio imperativo, tipizzato, ad oggetti, interpretato ed indipendente dalla piattaforma.
+- L'utente alloca spazio in memoria dinamica usando la keyword new. Il sistema gestisce la deallocazione autonomamente grazie al garbage collector.
+- L'ambiente di sviluppo è il JDK e funziona da linea di comando. Il compilatore è javac che produce codice intermedio (in bytecode), l'interprete è il JVM, il debugger è il jdb.
+- Esistono molte librerie, quali per I/O, GUI, networking, threads, database...
+- Il JRE è il Java Runtime Enviroment, è un tool che serve per l'esecuzione del software.
 - Le versioni di Java e JDK sono diverse tra loro.
 
 **TIPI PRIMITIVI**
@@ -12,8 +13,13 @@ byte, short, int, long, float, double, char (16 bit), boolean
 ```
 
 **TIPI RIFERIMENTO**
-Un riferimento è un oggetto istanza di una classe, referenziato da una variabile.
-Si usa null per indicare nessun riferimento.
+
+```                                                                            Java
+// Un riferimento è un oggetto istanza di una classe, referenziato da
+// una variabile.
+
+Contatore cont; // tipo riferimento, usare null per indicare nessun riferimento
+```
 
 **ASSEGNAMENTO**
 
@@ -27,7 +33,7 @@ a = (b = 3); // valido
 
 **CAST**
 
-```                                                                 Java
+```                                                                            Java
 // Si può forzare un valore ad essere un tipo diverso.
 // La sintassi del cast è (nuovo_tipo) valore;
 
@@ -67,7 +73,7 @@ maggiore-uguale (>=), minore-uguale (<=).
 
 **COSTRUTTI CONDIZIONALI - IF**
 
-```                                                                 Java
+```                                                                            Java
 // Esegue uno statement se la condizione è vera.
 
 if (a > 10)
@@ -78,7 +84,7 @@ else
 
 **COSTRUTTI CONDIZIONALI - SWITCH**
 
-```                                                                 Java
+```                                                                            Java
 // Viene eseguito il blocco corrispondente alla variabile.
 
 // Se non viene messo il break vengono eseguiti tutti i blocchi dal valore della variabile fino al prossimo break o alla fine.
@@ -97,10 +103,10 @@ int dayOfWeek = switch(day)
 
 **COSTRUTTI ITERATIVI - FOR**
 
-```                                                                 Java
+```                                                                            Java
 // 1) Esegue il blocco di istruzioni iniziale.
 // 2) Lo ripete affinchè la condizione è vera.
-// 3) Ad ogni iterazione incrementa i numeri.
+// 3) Ad ogni iterazione incrementa la variabile di controllo.
 
 for (int i = 0; i<10; i++)
 	a = a*2;
@@ -124,12 +130,11 @@ while (i < 10)
 do
 	i++;
 while (i < 10)
-
 ```
 
 **FUNZIONI**
 
-```                                                                 Java
+```                                                                            Java
 // In Java si chiamano metodi.
 // Possono essere definiti solo dentro una classe.
 // Possono esistere metodi con lo stesso nome ma parametri diversi.
@@ -138,12 +143,20 @@ int somma (int a, int b)
 { return a+b; }
 ```
 
+**COMMENTI**
+
+```                                                                            Java
+// Esistono 3 tipi di commenti:
+// C-styled /* e terminano con */
+// C++ styled //
+// Documentazione Java /** e terminano con */ - non considerati dal compiler
+```
+
 **CLASSE**
 
-```                                                                 Java
-// Insieme di stato e metodi.
+```                                                                            Java
+// Insieme di stato e metodi, definiscono l'oggetto.
 // È un Abstract Data Type.
-// Definisce lo stato e i metodi di un oggetto di una classe.
 // Si creano oggetti usando la keyword new.
 // Esistono classi Wrapper che permettono di usare tipi primitivi come oggetti.
 
@@ -153,7 +166,7 @@ class Contatore
 	private int val;
 
 	// interfaccia, composta da metodi
-	public Contatore() { val = 0; } // COSTRUTTORE
+	public Contatore() { val = 0; } // costruttore
 	public void setVal(int newVal) { val = newVal; }
 	public void inc() { val++; }
 	public int getVal() { return val; }
@@ -166,9 +179,8 @@ class Contatore
 // È un metodo speciale che viene chiamato quando si crea un oggetto
 // di una classe specifica. Inizializza l'oggetto stesso.
 // Ha lo stesso nome della classe e non ha valore di ritorno.
-// Possono essere più di uno se differenziati dal numero/tipo di parametri.
 
-public Contatore() { val = 0; }
+public Contatore() { val = 0; } // costruttore
 ```
 
 **CREAZIONE DELL'OGGETTO IN MEMORIA**
@@ -185,7 +197,8 @@ cont = new Contatore();
 
 ```                                                                          Java
 // Parte dal metodo citato qui sotto. Il metoodo in questione può
-// creare oggetti ed invocare i metodi.
+// creare oggetti ed invocare i metodi. Solitamente si crea la classe
+// Main.
 
 public static void main(String args[])
 
@@ -243,7 +256,7 @@ String toUpperCase() // rende la stringa tutta maiuscola.
 int[] v1 = {8, 12, 3, 4}; // array statico, già definito
 
 int[] v2;
-v2 = new int[5] // crea 5 celle di tipo int, inizializzate a zero
+v2 = new int[5]; // crea 5 celle di tipo int, inizializzate a zero
 
 String v1[];
 v1 = new String[2]; // crea 2 riferimenti ad oggetto, inizializzati a null
@@ -260,28 +273,30 @@ cont[2] = null; // non inizializzato
 
 **DOCUMENTAZIONE**
 
-```                                                                         Java 
-// È possibile creare commenti con /**, verranno interpretati come
-// informazioni da inserire in documentazione.
+```                                                                           Java 
 // Javadoc crea pagine HTML di documentazione.
+// Per creare il file HTML di documentazione si può usare il comando
+// javadoc -author -version -d doc file.java
 ```
 
 **PACKAGES**
 
 ```                                                                         Java 
-// Corrispondono a contenitori fisici di file .class. Un package
-// logicamente raggruppa le classi adatte insieme. Sono anche ricorsivi,
-// quindi contengono sottoclassi.
+// Sono contenitori logici di classi. Corrispondono a contenitori fisici
+// dei file delle classi .class. Sono anche contenitori ricorsivi, quindi
+// esistono package e sottopackage.
 
-package utilità -> // cartella che comprende la classe Contatore e Data
-utilità.Contatore o utilità.Data // nuovo nome della classe
+// Supponiamo di inserire la classe Contatore e Data all'interno del package
+// utilità
+
+package utilità -> // creazione del package
+utilità.Contatore o utilità.Data // nome completo della classe senza importare
 utilità.Contatore c1 = new utilità.Contatore() // creazione oggetto
 
-// Bisogna fare attenzione in fase di compilazione.
 $ java utilità.Contatore // esegue main della classe Contatore, package utilità
 
 import utilità.Contatore // importa la classe del package su un altro file
-Contatore c1 = new Contatore(); // possibile se si importa la classe
+Contatore c1 = new Contatore(); // non c'è bisogno del package.classe se si importa il package
 
 import utilità.*; // importa tutte le classi della directory (* non è ricorsivo)
 
@@ -317,19 +332,18 @@ class Esempio
 
 **METODI DI CLASSE**
 
-```                                                                         Java 
-// Metodi definiti attraverso la keyword static. Esistono
-// indipendentemente dall'esistenza di oggetti di quella classe.
+```                                                                           Java 
+// Metodi definiti attraverso la keyword static. 
+// Esistono indipendentemente dall'esistenza di oggetti di quella classe.
 // Possono essere invocati anche senza la creazione di un oggetto della classe.
 // Possono accedere solo a variabili di classe.
-// Un esempio è il metodo main.
 
 class Esempio
 {
 	public static void prova() { System.out.print("ciao"); }
 }
 
-Esempio.prova(); // valido dall'interno
+Esempio.prova(); // valido invocare dall'esterno
 ```
 
 **COSTANTI**
@@ -372,7 +386,7 @@ System.out.println(p1.getVal()) // stampa 0, non ha copiato il riferimento
 
 ```                                                                         Java 
 // Tutti i parametri sono passati per riferimento.
-// Se di tipo primitivo viene passato per valore.
+// Se di tipo primitivo viene passato per valore vero e proprio.
 // Se di tipo riferimento viene pasasato per indirizzo.
 ```
 

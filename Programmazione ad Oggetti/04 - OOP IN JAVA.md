@@ -1,5 +1,5 @@
 **INCAPSULAMENTO**
-L'incapsulamento dice che la classe appunto "incapsula" queste caratteristiche:
+L'incapsulamento dice che la classe "incapsula" queste caratteristiche:
 - Variabili che siano primitive o riferimenti
 - Metodi (funzioni)
 - Altre classi, creando classi innestate
@@ -93,3 +93,39 @@ class ContatorePreciso extends Contatore
 
 **GERARCHIA JAVA**
 Tutte le classi derivano da Object. È una classe radice che raggruppa le definizioni comuni per ogni oggetto.
+
+**ESEMPIO EREDITARIETÀ**
+
+```                                                                          Java
+public class Veicolo
+{
+	private int numeroPosti;
+
+	public Veicolo(int NP) { numeroPosti = NP; } // costruttore
+	public int getNumeroPosti() { return numeroPosti; }
+}
+
+public class VeicoloTerrestre extends Veicolo
+{
+	private int numeroRuote;
+
+	public VeicoloTerrestre(int NP, int NR) 
+	{ 
+		super(NP);
+		numeroRuote = NR; 
+	}
+	
+	public int getNumeroRuote() { return numeroRuote; }
+}
+
+public class VeicoloAcquatico extends Veicolo
+{
+	private long stazza;
+
+	public VeicoloAcquatico (int NP, long S)
+	{
+		super(NP);
+		stazza = S;
+	}
+}
+```
