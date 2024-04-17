@@ -1,77 +1,36 @@
-**ATTRIBUTO SCALARE**
-Un attributo semplice, che ha solo un valore.
-- ES: Matricola, voto, nome.
+**CARDINALITÀ**
+- (0,1) - può esserci una sola istanza.
+- (1,1) - deve esserci una sola istanza.
+- (0,n) - possono esserci più istanze.
+- (1,n) - devono esserci una o più istanze.
 
-**ATTRIBUTO MULTIPLO**
-Un attributo multiplo, sono ammessi n valori.
-- ES: Titolo, qualifica, specialità.
-- 
-**ATTRIBUTO COMPOSTO**
-Un attributo composto è un insieme di attributi.
-- ES: Una data è composta da giorni, mesi, anni.
+**ELENCO ATTRIBUTI**
+- **Attributo scalare**: Semplice, ad un solo valore (matricola, voto).
+- **Attributo multiplo**: Semplice, ammessi n valori (qualifica, titolo).
+- **Attributo composto**: Attributo che contiene più attributi (data contiene gg, mm, aaaa).
+- **Attributo multiplo composto**: Telefono (stato, città, numero).
+- **Attributo opzionale**: Possono non esserci istanze, quindi ha cardinalità 0,n (telefono, nome).
+- **Attributo totale**: Deve esserci minimo una istanza, quindi ha cardinalità 1,n (CF).
+- **Attributo costante**: Non può cambiare valore (CF, cognome, nome).
+- **Attributo modificabile**: Può cambiare valore (voto, indirizzo).
+- **Attributo unico**: Ha tutte le istanze con valore diverso (CF, matricola).
+- **Attributo generico**: Le istanze possono uguagliarsi (nome, cognome).
+- **Attributo chiave**: Identifica in modo univoco una singola istanza di entità o associazione. Deve essere totale, unico, esplicito, può essere composto e non è modificabile.
 
-**ATTRIBUTO MULTIPLO COMPOSTO**
-Un attributo multiplo composto è insieme di attributi che ammettono n valori (1, n).
-- ES: Numero di telefono è composto da stato, città, numero.
-
-**ATTRIBUTO OPZIONALE**
-Un attributo opzionale è un attributo che ammette la non esistenza del valore.
-Non esistenza è diverso da "non si sa" oppure "non è applicabile".
-- ES: Telefono, qualifica, voto, nome, indirizzo.
-
-**ATTRIBUTO TOTALE**
-Il contrario dell'attributo opzionale.
-- ES: Codice fiscale, cognome.
-
-**ATTRIBUTO COSTANTE**
-Un attributo costante non può cambiare valore. Il contrario è modificabile.
-- ES COSTANTE: CF, cognome.
-- ES MODIFICABILE: Parametro, indirizzo.
-
-**ATTRIBUTO CALCOLATO**
-Un attributo calcolato ha il valore calcolato con un certo algoritmo. Il contrario è esplicito.
-- ES CALCOLATO: Stipendio.
-- ES ESPLICITO: CF, cognome.
-
-**ATTRIBUTO UNICO**
-Un attributo unico ha tutte le istanze della classe con valore diverso. Il contrario è generico.
-- ES UNICO: CF, P.IVA.
-- ES GENERICO: Cognome.
-
-**ATTRIBUTO TEMPORALE**
-Un attributo temporale deve memorizzare le sue variazioni nel tempo.
-- SNAPSHOT: Memorizzo periodicamente le variazioni del mio attributo (stipendio, quantità...)
-- STORICO: Modellare direttamente nel database la variazione e il tempo di variazione (prezzo, indirizzo, mansione...)
-
-**ATTRIBUTO CHIAVE**
-Un attributo chiave identifica in modo univoco la singola istanza di entità o di associazione.
-- Obbligatorio, unico, esplicito.
-- Può essere composto.
-- Non è modificabile.
-
-**VINCOLI DEGLI ATTRIBUTI**
-I vincoli ci sono per controllare che gli attributi non assumano valori che non devono assumere. Sono delle regole che vengono imposte e specificate nel testo.
-
-**VINCOLI STATICI**
-- Controlla se il valore di un attributo appartiene ad un dominio preciso.
-- Esiste un vincolo dove un attributo è dipendente da valori di altri attributi.
-
-**VINCOLI DINAMICI**
-Un vincolo dinamico è un vincolo che varia nel tempo.
-- ES: Età precedente < età successiva sempre.
+**VINCOLI SUGLI ATTRIBUTI**
+I vincoli degli attributi sono regole imposte agli attributi in modo che non assumano valori illegali.
+Spesso possono essere rappresentati nello schema E/R, altri vengono gestiti su specifiche a parte.
+- Vincoli statici: Sono i vincoli più semplici. Controllano se il valore di un attributo appartiene ad un certo dominio. Un vincolo di un attributo può essere dipendente da valori di altri attributi.
+- Vincoli dinamici: Un vincolo dinamico è un vincolo che varia nel tempo.
 
 **TIPO DELLA CHIAVE**
-- Criteri dipendenti dall'entità (matricola, cod. inventario, targa...)
-- Chiave scelta da altre organizzazioni (cod. fiscale, num.telaio...)
-- Scelta condizionata dai fattori esterni.
+- Può essere un criterio dipendente dall'entità (matricola, codice inventario, targa...).
+- Può essere una chiave scelta da altre organizzazioni (CF, numero telaio...).
+- Può essere una scelta condizionata da fattori esterni.
+- Può essere un serial che mantiene l'unicità (spesso sconsigliati perchè poco significativi).
 
-**CHIAVI ALTERNATIVE**
-Ci possono essere più chiavi per la stessa entità.
-- ES: Entità albergo, una chiave è l'id dell'albergo, un attributo chiave composto che comprende nome e località, un'altra chiave può essere un codice_hotel che è un numero che identifica l'hotel.
+**ALTERNATIVE KEY**
+Possono esserci più chiavi per una singola entità. 
+- ES: Nell'entità albergo abbiamo due chiavi. La chiave primaria è l'hotel_id che è una chiave molto significativa dato che ci dice nome e località dell'albergo. Una possibile chiave secondaria è un codice hotel.
 
-**ESERCIZIO 1 COMPLETO**
-
-![[Schema Agenzia di Viaggi.png]]
-
-
-
+![[Alternative Key.png]]

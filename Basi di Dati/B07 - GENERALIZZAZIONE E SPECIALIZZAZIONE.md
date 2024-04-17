@@ -17,7 +17,7 @@ La gerarchia concettuale è il legame logico tra un entità padre E ed alcune en
 **DEFINIZIONI DI GERARCHIA**
 - T: **Totale** - Ogni istanza dell'entità padre deve far parte di una delle entità figlie. 
   Nel primo esempio il personale si divide completamente in dipendenti o esterni.
-- NT: **Non totale** - Le istanza dell'entità padre possono far parte di una delle entità figlie. 
+- NT: **Non totale** - Le istanze dell'entità padre possono far parte di una delle entità figlie. 
   Nel secondo esempio non tutti i cittadini sono pescatori.
 - E: **Esclusiva** - Ogni istanza dell'entità padre deve far parte di UNA SOLA delle entità figlie.
   Nel primo esempio il personale o è dipendente o è esterno, non entrambi.
@@ -45,10 +45,3 @@ Per lo schema in questione si sono unite due entità per creare una sottoentità
 Sono diversi e non ce n'è uno migliore dell'altro:
 - Con le gerarchie ISA si va a modellare a livello di schema varie entità che hanno attributi non in comune tra di loro, cosa che non succede con l'auto-associazione. Ci si ferma ad un certo livello, qui abbiamo che i dirigenti dirigono gli impiegati e fine.
 - Con l'auto-associazione possiamo creare un qualsiasi livello di gerarchia perchè viene modellata a livello di tuple.
-
-**STRATEGIE DI PROGETTO**
-Non ho preso appunti su questa parte perchè applicabili al progetto, penso sia molto più facile apprenderla durante lo svolgimento del progetto.
-- TOP-DOWN
-- BOTTOM-UP
-- INSIDE-OUT
-- MISTA

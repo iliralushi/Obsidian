@@ -1,47 +1,44 @@
-**FASI PROGETTAZIONE BASE DI DATI**
-La progettazione di una base di dati si inserisce nel ciclo di vita del sistema informativo.
-Comprende le seguenti attività:
+**IL PROGETTO DELLA BASE DI DATI**
+Si inserisce nel ciclo di vita di un sistema informativo. Comprende in generale le seguenti attività:
 - Raccolta ed analisi dei requisiti
 - Progettazione
-- Realizzazione
+- Implementazione
 - Validazione e collaudo
 - Funzionamento
 
 **ANALISI DEI REQUISITI**
-Lo scopo è produrre una descrizione informale della nostra progettazione descrivendo i dati e le operazioni che essi subiscono. Richiede uno studio preliminare su:
-- Chi utilizzerà il nostro sistema
-- Quali attività deve svolgere il nostro sistema
-- Quanto tempo si impiegherà per implementare ogni funzionalità
-- Quanto costerà il sistema che vogliamo implementare
-
-**REQUISITI DI INFORMAZIONE E FUNZIONAMENTO**
-- Quali tipi di dati dovranno esserci
-- Dove verranno dislocati i dati
-- Importanza dei dati
-- Quantità di dati e quanto cresceranno nel tempo
-- Tipo di dati e frequenza di uso (...)
-
-**COME PROCEDERE**
-- Si analizza il sistema informativo esistente
-- Si produce una prima versione dei requisiti in linguaggio naturale
-- Si ricontrollano le frasi relative alle categorie di dati e alle operazioni che li coinvolgono
-- Si costruisce un **glossario dei termini** che comprende i termini (entità), la descrizione (attributi), l'elenco dei sinonimi e i vari collegamenti (associamenti).
-- Si verifica la completezza e la consistenza delle specifiche
+Comprende attività su:
+- Unità organizzative omogenee che utilizzeranno la nostra base di dati.
+- Individuazione delle attività che devono essere supportate dal sistema.
+- Produzione di una descrizione informale, quanto possibile completa sulle due fasi sopra.
 
 **PROGETTAZIONE CONCETTUALE**
-Ha lo scopo di tradurre ciò che abbiamo tratto dall'analisi dei requisiti in una descrizione formale che dovrà essere indipendente dal DBMS. Fa riferimento al modello concettuale.
+La progettazione concettuale traduce ciò che abbiamo scritto nell'analisi dei requisiti in uno schema implementabile senza DBMS. Fa riferimento al modello concettuale (E/R). 
 
 **SCHEMA CONCETTUALE**
-Rappresentazione semplificata di una base di dati che contiene soltanto le informazioni essenziali
-Deve risultare di facile comprensione per evitare confusione.
+Lo schema concettuale è una rappresentazione semplificata di una BD che contiene solo le informazioni essenziali.
 
-**COSA DEVE ESSERE MODELLATO?**
-- CONOSCENZA CONCRETA: i fatti specifici che vogliamo rappresentare nel nostro schema
-- CONOSCENZA ASTRATTA: i fatti generali che descrivono la conoscenza concreta
-- CONOSCENZA PROCEDURALE: i modi con cui si opera sulla conoscenza per modificarla o ricavare altri fatti
+**STEP DELLA PROGETTAZIONE CONCETTUALE**
+- Si analizza il sistema informativo esistente.
+- Si produce una prima versione dei requisiti in linguaggio naturale, leggendo ciò che si è scritto, questa è la creazione dell'analisi dei requisiti.
+- Si costruisce a partire dalle frasi un glossario dei termini che comprende entità, associazioni, sinonimi e attributi. 
+- Si crea uno schema scheletro per ogni vista.
+- Si crea un dizionario dei dati a partire dal glossario dei termini. Comprende specifiche sugli attributi, chiave interne/esterne, gerarchie...
+- Si svolge lo schema E/R, prima per ogni vista, poi unificando lo schema in uno unico.
 
-**GLOSSARIO ESERCIZIO 1**
+**QUALI COSTRUTTI E/R USARE**
+- Entità: Se ha proprietà significative ed esprime oggetti in maniera autonoma.
+- Attributo: Se è semplice e non ha proprietà.
+- Relationship: Se correla due o più concetti.
+- Gerarchia: Se è caso particolare di un altro.
 
-![[Glossario Agenzia di Viaggi.png]]
+**REIFICAZIONE**
+La reificazione è una complicanza dello schema E/R. Consiste nell'aggiungere un entità e due associazioni binarie aggiuntive per poter esprimere in dettaglio certi fatti.
 
+**DESIGN PATTERNS**
 
+![[Reificazione di attributo di entità.png]]
+![[Part-of.png]]![[Instance-of.png]]![[Reificazione di relazione binaria.png]]
+![[Reificazione di relazione ricorsiva.png]]
+![[Reificazione di relazione ternaria.png]]
+![[Reificazione di attributo di relazione.png]]

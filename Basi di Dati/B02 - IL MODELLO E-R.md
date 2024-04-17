@@ -1,40 +1,29 @@
-**MODELLO E-R**
-Il modello Entity-Relationship è il modello utilizzato per lo schema concettuale della base di dati.
-Esso usa simboli grafici per una comprensione più facile.
+**MODELLO E/R**
+Il modello E/R è il modello utilizzato per esprimere una base di dati in uno schema concettuale.
+Usa simboli per facilitarne la lettura. Sono schemi grafici con l'aggiunta di frasi di specifica e vincoli.
 
 **ISTANZA DI ENTITÀ**
-L'istanza di entità è una cosa con esistenza autonoma di cui vogliamo descrivere fatti specifici. Deve essere chiaramente identificata in modo di distinguerla.
-- ES: Il docente Riccardo Martoglia, il numero di matricola di uno studente.
+L'istanza di entità è UNA occorrenza di un qualcosa di cui vogliamo registrare fatti specifici e che può essere chiaramente identificata in modo da poter distinguerla dalle altre.
+- ESEMPIO: Il docente Martoglia, lo studente 176180.
 
 **ISTANZA DI RELAZIONE**
-L'istanza di relazione è un fatto che descrive un'azione e stabilisce un legame tra istanze di entità.
-- ES: Martoglia **insegna** Basi di Dati, Bianchi **lavora** al magazzino 4.
+L'istanza di relazione è UN fatto che descrive un'azione o una situazione e stabilisce legami fra istanze di entità. Per le relazioni usiamo il termine ASSOCIAZIONE.
+- ES: Martoglia **INSEGNA** DB, la ditta Rossi **ORDINA** computer.
 
 **ATTRIBUTI**
-Gli attributi sono fatti che descrivono le caratteristiche delle istanze di entità e le caratteristiche delle istanze di associazione. Gli attributi assumono valori. 
-- ES ENTITÀ: Martoglia ha **nome** Riccardo, Bianchi ha **matricola** 01783.
-- ES ASSOCIAZIONE: Martoglia insegna Basi di Dati **a informatica**, Bianchi ha lavorato **3 ore** al magazzino 4.
+Gli attributi sono fatti che descrivono le caratteristiche delle istanze di entità e delle istanze di associazione. Essi assumono valori.
+- ES: Martoglia **HA NOME** Riccardo, Martoglia insegna DB **A INFORMATICA**,
 
 **CLASSIFICAZIONE**
-Astrarre le differenze tra le varie istanze per evidenziare ciò che le rende omogenee in un certo contesto. La classificazione permette di ragruppare le varie istanze di entità o relazioni in un unica classe, diventeranno quindi entità e relazioni.
-- ES: Istanze di entità diverse come Ceri, Martoglia, Tiberio vengono classificate come "docenti" per mettere in evidenza il fatto che a tutti interessano vari attributi come un codice, nome, cognome, data di nascita etc...
+È un meccanismo che permette di astrarre le differenze fra le singole istanze per poter unificare le istanze di entità/di associazione in un unica classe. Diventeranno semplicemente entità e relazioni.
+La classe è un insieme di istanze di entità/associazione che son considerate dello stesso tipo.
+- ES: Ceri, Martoglia, Tiberio vengono considerati in un unica entità chiamata **DOCENTI**.
 
-**CLASSE**
-Insieme di istanze considerate dello stesso tipo in un certo contesto.
-- ES: Docenti, medici, operai, cittadini, dirigenti etc...
-
-**AGGREGAZIONE DEL TIPO**
-Meccanismo che definisce il tipo delle istanze delle varie classi come insieme di vari attributi.
-- ES: DOCENTI (**codice, nome, cognome, qualifica...**) CORSI (**codice, nome, anno, ore...**)
+**AGGREGAZIONE**
+È un meccanismo che definisce il tipo delle istanze di classi attraverso aggregazione di attributi.
+- ES: Corsi **(CODICE, NOME, ANNO, ORE)**, Docenti (**CODICE, NOME, COGNOME, QUALIFICA)**.
 
 **SCHEMA SCHELETRO**
-Lo schema scheletro è uno schema molto riduttivo. Definisce le associazioni tra entità e relazioni. Ci permette di dare una prima struttura dello schema, senza indicazioni sul tipo delle entità e delle relazioni.
+È uno schema molto riduttivo che definisce solo le entità con le varie associazioni. Ci permette di dare un primo schema molto semplice, senza informazioni aggiuntive.
 
-**SCHEMA SCHELETRO ES 1**
-Errore che ho fatto:
-- Città di partenza e arrivo non sono due entità separate perchè sono sempre città, possiamo quindi usarle per associare viaggio e città ricorsivamente.
-
-![[Schema Scheletro Agenzia di Viaggi.png]]
-
-
-
+![[Schema Scheletro.png]]

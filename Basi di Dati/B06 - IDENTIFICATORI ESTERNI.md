@@ -29,9 +29,3 @@ Questa soluzione non funziona perchè è troppo semplice. Addirittura non possia
 **SOLUZIONE TERNARIA**:
 Una associazione tra custode, area e notte che diventa un entità. L'associazione sarà il turno.
 Questa soluzione non funziona perchè non c'è alcun vincolo, possiamo aggiungere ciò che vogliamo, per esempio possiamo aggiungere due custodi per una notte unica, oppure un custode in due aree diverse nello stesso giorno.
-
-**SOLUZIONE**:
-
-![[Soluzione Custode.png]]
-
-Entrambi i vincoli vengono rispettati. Turno (riportato sbagliatamente come notte) avrà due chiavi, la chiave (mat, notte) e la chaive (num_area, notte) che non verranno mai violate.

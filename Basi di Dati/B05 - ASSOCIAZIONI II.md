@@ -1,5 +1,5 @@
 **AUTO-ASSOCIAZIONE**
-Associazione che hanno come istanze di entità altre istanze della stessa entità.
+È un associazione che ha come partecipanti delle istanze che provengono dalla stessa entità.
 
 **AUTO-ASSOCIAZIONI NON RICORSIVA DI EQUIVALENZA (N:M)**
 Auto-associazione che va da n-m.
