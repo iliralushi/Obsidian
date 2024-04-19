@@ -1,47 +1,28 @@
-**GERARCHIA DI SPECIALIZZAZIONE**
-Si definisce gerarchia di specializzazione il legame tra classi e sottoclassi. Viene usata quando esistono casi particolari di una determinata entità.
-- Clienti -> Clienti tesserati
-- Articolo -> Articolo in serie
+**GERARCHIE SOMMARIO**
+Più entità possono risultare simili o casi particolari di altre entità. La gerarchia di **specializzazione** è il legame logico che esiste tra classi e sottoclassi. 
+- Gerarchia: La gerarchia concettuale è il legame logico tra un entità padre e una o più entità figlio. L'entità a cui puntano le freccie viene detta generalizzazione (entità padre). l'entità che puntano le freccie vengono dette specliazziazioni (entità figlio).
+- Un istanza dell'entità figlio è istanza dell'entità padre, un istanza dell'entità padre può essere un istanza dell'entità figlio.
+- I figli ereditano tutti gli attributi del padre, non è vero il viceversa.
 
-**GERARCHIA**
-La gerarchia concettuale è il legame logico tra un entità padre E ed alcune entità figlie tipo E1, E2, E3... En. Un istanza di En è anche un istanza di E, un istanza di E **può** essere istanza di una specializzazione. Essendo una gerarchia può crearsi una gerarchia che parte da una specializzazione.
-- E è la **generalizzazione** di E1, E2, EN.
-- E1, E2, EN sono **specializzazioni** di E.
+![[Esempio Gerarchia 1.png]]
+![[Esempio Gerarchia 2.png]]
 
-**ESEMPIO GERARCHIA**
+**TIPO DI GERARCHIA**
+- T - TOTALE: Ogni istanza dell'entità padre deve far parte di un entità figlia.                             **ES.1:** La gerarchia è totale perchè il personale è diviso in dipendente o esterno.
+- NT - NON TOTALE: Un istanza dell'entità padre **può** far parte delle entità figlie.                        **ES.2**: i cittadini sicuramente non sono solo pescatori.
+- E - ESCLUSIVA: Ogni istanza dell'entità padre deve far parte di una sola entità figlia.               **ES.1**: la gerarchia è esclusiva perchè un personale o è dipendente o è esterno.
+- NE - NON ESCLUSIVA: Ogni istanza dell'entità padre può fare parte di più di un'entità figlia.      **ES**: un ingegnere può essere meccanico e anche elettronico.
 
-![[Esempio Personale.png]]
-
-![[Esempio Pescatore.png]]
-
-**DEFINIZIONI DI GERARCHIA**
-- T: **Totale** - Ogni istanza dell'entità padre deve far parte di una delle entità figlie. 
-  Nel primo esempio il personale si divide completamente in dipendenti o esterni.
-- NT: **Non totale** - Le istanze dell'entità padre possono far parte di una delle entità figlie. 
-  Nel secondo esempio non tutti i cittadini sono pescatori.
-- E: **Esclusiva** - Ogni istanza dell'entità padre deve far parte di UNA SOLA delle entità figlie.
-  Nel primo esempio il personale o è dipendente o è esterno, non entrambi.
-- NE: **Non esclusiva** - Ogni istanza dell'entità padre può far parte di una o più entità figlie.
-  
-**EREDITARIETA DELLE PROPRIETA**
-Le proprietà dell'entità padre non devono essere replicate nelle entità figlie perchè esse ereditano tutti gli attributi dell'entità padre MA non è vero il viceversa.
-
-**SINONIMO DI GERARCHIA CONCETTUALE**
-Gerarchia ISA:
-- Dipendente è un (is a) personale
-- Esterno è un (is a) personale
+**GERARCHIE ISA**
+Esse sono un sinonimo della gerarchia concettuale.
+- ES: Dipendente è un (is a) personale, esterno è un (is a) personale.
 
 **SOTTOCLASSE INTERSEZIONE**
+Può essere creata una sottoclasse intersezione perchè essa beneficia di certi aspetti. In questo caso viene creata la specializzazione studente-lavoratore.
 
-![[Sottoclasse Intersezione.png]]
+![[Sottoclasse intersezione.png]]
 
-In alcuni casi se viene specificato si possono modellare entità intersezione, come in questo caso.
-Per lo schema in questione si sono unite due entità per creare una sottoentità intersezione, studente-lavoratore.
+**GERARCHIE ISA E AUTOASSOCIAZIONI**
+Sono diverse tra di loro, le gerarchie ISA modellano a livello di schema varie entità che hanno attributi in comune tra di loro. Ci si ferma ad un certo livello di gerarchia. Con le auto-associazioni possiamo creare un qualsiasi livello di gerarchia siccome agiamo su attributi e viene modellata a livello di tuple.
 
-**CONFRONTO TRA GERARCHIE ISA E AUTO-ASSOCIAZIONI**
-
-![[Confronto tra ISA e Auto-Associazioni.png]]
-
-Sono diversi e non ce n'è uno migliore dell'altro:
-- Con le gerarchie ISA si va a modellare a livello di schema varie entità che hanno attributi non in comune tra di loro, cosa che non succede con l'auto-associazione. Ci si ferma ad un certo livello, qui abbiamo che i dirigenti dirigono gli impiegati e fine.
-- Con l'auto-associazione possiamo creare un qualsiasi livello di gerarchia perchè viene modellata a livello di tuple.
+![[ISA vs Autoassociazioni.png]]

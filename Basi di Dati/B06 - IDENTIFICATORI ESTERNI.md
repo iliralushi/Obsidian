@@ -13,3 +13,13 @@ L'entità dipendente è quella forte, l'entità auto quella debole. Quando nel t
 - Un identificatore esterno può coinvolgere un altro identificatore esterno a patto che non si creino cicli di identificazione.
 - La cardinalità dell'entità a cui si applica un identificatore esterno DEVE essere (1,1).
 
+**COME USARE GLI IDENTIFICATORI ESTERNI**
+- Di solito si usa un identificatore esterno quando un'istanza di entità deve fare una sola volta un istanza di un altra entità. 
+- Ragionare in "data x entità oppure data x e y entità allora z sarà impattata."
+- Se è semplice usiamo l'identificatore esterno sull'attributo/i che ci interessa.
+- Se è composta, quindi ci sono due entità forti e una debole, reifichiamo, quindi creiamo un'altra entità intermezzo che avrà come chiave la combinazione delle chiavi delle entità forti. Ci saranno anche 2 associazioni in più (deve essere binario)
+
+**ESEMPIO IDENTIFICATORI ESTERNI COMPOSTI**
+
+![[Identificazione esterna composta I.png]]
+![[Identificazione esterna composta II.png]]![[Identificazione esterna composta III.png]]
