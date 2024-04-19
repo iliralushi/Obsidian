@@ -23,6 +23,6 @@ Può essere creata una sottoclasse intersezione perchè essa beneficia di certi 
 ![[Sottoclasse intersezione.png]]
 
 **GERARCHIE ISA E AUTOASSOCIAZIONI**
-Sono diverse tra di loro, le gerarchie ISA modellano a livello di schema varie entità che hanno attributi in comune tra di loro. Ci si ferma ad un certo livello di gerarchia. Con le auto-associazioni possiamo creare un qualsiasi livello di gerarchia siccome agiamo su attributi e viene modellata a livello di tuple.
+Sono diverse tra di loro, le gerarchie ISA modellano a livello di schema varie entità che hanno attributi in comune tra di loro. Ci si ferma ad un certo livello di gerarchia, gli impiegati son diretti da un dirigente. Con le auto-associazioni possiamo creare un qualsiasi livello di gerarchia siccome agiamo su istanze e viene modellata a livello di tuple.
 
 ![[ISA vs Autoassociazioni.png]]
