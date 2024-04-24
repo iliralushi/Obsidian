@@ -25,10 +25,10 @@ Possiamo tradurre tutto con un unica relazione che comprende tutti gli attributi
 **PER RIASSUMERE...**
 - Per associazioni (n,m) dobbiamo usare tre relazioni.
 - Per associazioni (1,n) possiamo usare due relazioni, una che "ingloba" l'altra e avere la chiave dell'altra entità in FK e l'altra entità rappresenta i propri dati.
-- Per associazioni (1,1) possiamo usare una relazione che comprende tutto e avrà una AK. L'unico caso in cui cambia è quando entrambe le entità hanno cardinalità (0,1) le relazioni saranno due
+- Per associazioni (1,1) possiamo usare una relazione che comprende tutto e avrà una AK. L'unico caso in cui cambia è quando entrambe le entità hanno cardinalità (0,1) le relazioni saranno due.
 
 **AUTO-ASSOCIAZIONI**
-- CASO (N:M): Viene tradotta con una relazione per l'entità ed una per la associazione, quest'ultima contiene due volte la chiave. La soluzione è: STATO (**NOME**, AREA) e CONFINA        (**STATO_A**, **STATO_B**).
+- CASO (N:M): Viene tradotta con una relazione per l'entità ed una per la associazione, quest'ultima contiene due volte la chiave. La soluzione è: STATO (**NOME**, AREA) e CONFINA        (**STATO_A**, **STATO_B**) con FK (STATO_A REFERENCES STATO) e (STATO_B REFERENCES STATO).
 
 ![[Auto-Associazione N,M.png]]
 
