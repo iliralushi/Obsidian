@@ -13,7 +13,7 @@ Dato un valore di K1 corrisponderà un solo valore di K2, quindi c'è una dipend
 In caso di identificatori esterni esse rimangono chiavi che andranno espresse.
 
 ![[Traduzione standard non funziona.png]]![[Associazione binaria (1,n).png]]
-
+![[ID Esterno.png]]
 **ASSOCIAZIONE BINARIA 1:1**
 Possiamo tradurre tutto con un unica relazione che comprende tutti gli attributi e le chiavi. La chiave primaria va a scelta, quindi sarà K1 o K2. Quella non primaria verrà citata come AK. 
 - Se la cardinalità di E2 è (0,1) e la cardinalità di E1 è (1,1) allora la chiave scelta sarà K2. Se scegliessimo come chiave K1 allora non avremmo modo di esprimere i casi dove E2 è nullo e non usufruisce di E1.
