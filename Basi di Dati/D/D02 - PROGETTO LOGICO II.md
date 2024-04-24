@@ -30,13 +30,15 @@ Possiamo tradurre tutto con un unica relazione che comprende tutti gli attributi
 **AUTO-ASSOCIAZIONI**
 - CASO (N:M): Viene tradotta con una relazione per l'entità ed una per la associazione, quest'ultima contiene due volte la chiave. La soluzione è: STATO (**NOME**, AREA) e CONFINA        (**STATO_A**, **STATO_B**).
 
-![[Pasted image 20240424195715.png]]
+![[Auto-Associazione N,M.png]]
 
 - CASO (1:N): E' traducibile con una sola relazione che contiene due volte l'attributo chiave, una volta come chiave e una come riferimento all'istanza di entità, con nome diverso per specificare il ruolo. DIPENDENTE (**MATR**, NOME, **CAPO**) con FK (CAPO REFERENCES DIPENDENTE).
 
-![[Pasted image 20240424195933.png]]
+![[Auto-Associazione 1,N.png]]
 
 - CASO (1:1): Su entrambi i rami è meglio specificare il ruolo, conviene la soluzione a due relazioni. DIPENDENTE (**MATR**, NOME) e SPOSATI (**MOGLIE**, MARITO) con FK1 (MOGLIE REFERENCES DIPENDENTE) e FK2 (MARITO REFERENCES DIPENDENTE) e come AK una delle due chiavi, come nel caso dell'associazione binaria.
+
+![[Auto-Associazione 1,1.png]]
 
 **SUPERCHIAVE**
 Essa è la chiave ottenuta componendo le chiavi di tutte le entità presenti, quindi una chiave composta il cui set di componenti non è minimale, quindi la chiave singola è un sottoinsieme della superchiave.
