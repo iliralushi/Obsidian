@@ -43,7 +43,7 @@ Il collasso verso l'alto riunisce le entità figlie sull'entità padre come i lo
 - NON-TOTALE + ESCLUSIVA: Il selettore ha N+1 valori, uno per ogni figlio più un valore utilizzato per indicare un istanza di entità che non appartiene ad alcun figlio.
 - TOTALE/PARZIALE NON-ESCLUSIVA: Ci saranno tanti **SELETTORI** booleani quanto il numero di figli. Le associazioni connesse alle entità figlie si connettono all'entità padre e la cardinalità minima delle associazioni diventerà zero.
 
-![[Esempio.png]]
+![[Obsidian/Basi di Dati/PNG/D/D01/Esempio.png]]
 
 ESEMPIO DI TRE ISTANZE:
 - Studente(123, rossi) - laureando(123, DFD) - SELETTORE(L, DFD, NULL)
