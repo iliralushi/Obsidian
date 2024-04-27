@@ -1,34 +1,50 @@
-**ANOMALIE DI UNA BASE DI DATI**
-1) **Ridondanza**; ogni volta che inseriamo un impiegato dobbiamo specificare lo stipendio, così come ogni volta che inseriamo un progetto dobbiamo specificare il budget. Non possiamo avere una chiave (progetto, impiegato) perchè non c'è unicità nei valori.
-2) **Aggiornamento**; essendo che i dati vengono ripetuti spesso allora l'efficienza nell'aggiornare il database non sarà buona. Prendendo come esempio il budget, se il progetto "biella" cambia budget allora dobbiamo operare su ogni tupla e cambiare il valore del campo.
-3) **Cancellazione**; se un impiegato lascia il progetto ed è l'ultimo rimasto rischiamo di perdere dati sul progetto, se la chiave è (progetto, impiegato) allora abbiamo valori nulli, quindi incompatibili di chiave.
-4) **Inserimento**; se la chiave è (progetto, impiegato) non abbiamo modo di inserire un impiegato che non partecipa ad alcun progetto, stessa cosa vale per un progetto che non ha impiegati.
+**CASO STUDIO: BASE DI DATI ERRATA**
+Questa sarà la base di dati usata per reintrodurre il concetto di dipendenza funzionale e introdurre il concetto di normalizzazione. Si ha:
+- **RIDONDANZA**: Si ripete più volte il fatto che un impiegato ha un certo stipendio, come si ripete più volte che un progetto ha un certo budget. I valori di progetto e impiegato non possono essere presi singolarmente come chiavi che sarà (progetto, impiegato).
+- **AGGIORNAMENTO**: Poichè si ripete più volte il fatto che un certo impiegato prende un certo stipendio l'aggiornamento dei valori avrà un efficienza scarsa dato che dobbiamo operare su ogni tupla di impiegato X per cambiare il valore. Vale anche per progetto-budget.
+- **CANCELLAZIONE**: Supponendo che un impiegato lasci l'azienda e sia l'ultima persona rimasta sul progetto possiamo perdere i dati su di esso, analogamente anche se un progetto viene eliminato possiamo perdere i dati dell'impiegato. Essendo la chiave (progetto, impiegato) potremmo avere valori invalidi (NULL).
+- **INSERIMENTO**: Essendo la chiave (progetto, impiegato) non possiamo aggiungere impiegati che non partecipano ad un progetto, quindi nemmeno progetti che non hanno impiegati all'interno.
 
 ![[Tabella.png]]
 
 **DIPENDENZA FUNZIONALE**
-La dipendenza funzionale è un vincolo di integrità per il modello relazionale.
-Supponiamo di avere una relazione R definita su uno schema S(X) e due sottoinsiemi di attributi Y e Z appartenenti ad X non vuoti. Esiste una dipendenza funzionale tra Y e Z se per ogni coppia di tuple T1 e T2 che hanno il valore di Y si ha che hanno il valore anche di Z.
-Dall'osservazione della relazione ricaviamo che:
-- Ogni volta che in una tupla compare un certo impiegato lo stipendio è sempre lo stesso.
-- Esiste una funzione che associa ad ogni valore nel dominio impiegato UN SOLO valore nel dominio stipendio. Questo vale anche per il progetto.
+La dipendenza funzionale è un vincolo di integrità per il modello relazionale. Osservando la relazione ricaviamo che:
+- Ogni volta che in una tupla appare un impiegato abbiamo uno stipendio che è uguale.
+- Possiamo dire che il valore dell'impiegato determina lo stipendio, quindi che possiamo associare ad un impiegato nel dominio degli impiegati **UN SOLO VALORE** dal dominio degli stipendi.
+- Analogamente per progetto e budget.
 
-**DIPENDENZE FUNZIONALI DELLA TABELLA**
-Impiegato, progetto -> funzione è una dipendenza completa.
-Impiegato, progetto -> stipendio e impiegato, progetto -> budget sono in realtà;
-Impiegato -> stipendio e progetto -> budget. Dalla nostra dipendenza finale possiamo dedurre le dipendenze (3) e (4). Queste sono quindi dipendenze parziali che causano anomalie.
+**DEFINIZIONE FORMALE DI DIPENDENZA FUNZIONALE**
+La dipendenza funzionale si può definire formalmente come:
+Data una relazione R definita su uno schema S(X) e due sottoinsiemi di attributi Y e Z appartenenti ad X non vuoti esiste una dipendenza funzionale Y->Z se per ogni copia di tuple (T1, T2) aventi lo stesso valore di Y risulta che hanno lo stesso valore di Z.
+- Impiegato->Stipendio, Progetto->Budget.
+
+**DIPENDENZE FUNZIONALI NELLA BASE DI DATI**
+Dato un impiegato lo stipendio sarà lo stesso, dato un progetto il budget sarà lo stesso. Se prendiamo la chiave K della relazione R si verifica che, essendo il valore di chiave unico si avrà una dipendenza funzionale tra la chiave e tutti i suoi attributi. Questo va in conflitto con ciò scritto nell'immagine, perchè possiamo determinare le dipendenze (3) e (4) che sono sbagliate.
+- (Impiegato, progetto)->funzione è una dipendenza completa.
+- (Impiegato, progetto)->stipendio/budget sono dipendenze parziali che causano le anomalie nella base di dati.
 
 ![[Obsidian/Basi di Dati/PNG/D/D03/Esempio.png]]
 
-**RELAZIONE IN FORMA NORMALE**
-Le anomalie nascono dalle dipendenze X->Y dove X non contiene la chiave della funzione.
-Una relazione R è in forma normale (Boyce e Codd) quando per ogni dipendenza X->Y in R, X è superchiave, quindi contiene una chiave K di R.
+**FORMA NORMALE**
+Le ridondanze ed anomalie nascono quando la X nella dipendenza X->Y non contiene la chiave della relazione. Possiamo quindi introdurre il concetto di forma normale (Boyce&Codd) che si ha per ogni dipendenza X->Y dove X è superchiave della relazione.
 
-**COME SISTEMARE LE RELAZIONI IN FORMA NON NORMALE**
-Una relazione in forma non normale è possibile che venga scomposta in due o più relazioni in forma normale. Possiamo scomporre la relazione in modo tale che ogni dipendenza funzionale corrisponda ad una relazione separata:
-- FUNZIONI: impiegato, progetto -> funzione.
-- IMPIEGATI: impiegato -> stipendio.
-- PROGETTO: progetto -> budget.
+**NORMALIZZAZIONE**
+Per sistemare le relazioni in forma non normale è necessario normalizzarle. Esse possono essere scomposte in due o più relazioni normali. La scomposizione avviene tramite proiezioni in modo tale da ottenere che ciascuna proiezione simboleggi una singola dipendenza funzionale. Essa è corretta se il join riunisce tutte le proiezioni senza la perdita di dati.
+- PER FUNZIONI: (impiegato, progetto)->funzioni.
+- PER IMPIEGEATI: impiegato->stipendio.
+- PER PROGETTO: progetto->budget.
 
-![[Soluzione parziale.png]]
-![[Join.png]]
+![[Soluzione.png]]
+
+**ERRORI CHE SI POSSONO INCONTRARE NELLA SCOMPOSIZIONE**
+Le scomposizioni sono errate se quando si effettua un join si ha una perdita di informazioni.
+Consideriamo una relazione SEDI (impiegato, progetto, sede) con un vincolo che dice che gli impiegati hanno come sede la sede dei loro progetti e le dipendenze:
+- (impiegato, progetto)->sede.
+- impiegato->sede e progetto->sede.
+
+Scomponendo secondo le due dipendenze riportate dalla tabella sotto avremo una tabella (impiegato, sede) e una tabella (progetto, sede). Se uniamo le tabelle usando l'attributo sede abbiamo che un impiegato sarà associato ad ogni progetto di una sede, crea quindi tuple che
+prima non esistevano, inoltre non rispettano nemmeno il vincolo. Una buona scomposizione quindi deve prevedere la ricostruzione di join su chiavi.
+
+Scomponendo partendo dallo schema E/R abbiamo una tabella (progetto, sede), una (impiegato, sede) e una (impiegato, progetto). Questa soluzione è parzialmente corretta. Va bene ma non abbiamo modo di esprimere il vincolo che verrà gestito con strumenti più avanti.
+
+![[Tabella II.png]]
