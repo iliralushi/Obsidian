@@ -16,12 +16,12 @@ La dipendenza funzionale è un vincolo di integrità per il modello relazionale.
 **DEFINIZIONE FORMALE DI DIPENDENZA FUNZIONALE**
 La dipendenza funzionale si può definire formalmente come:
 Data una relazione R definita su uno schema S(X) e due sottoinsiemi di attributi Y e Z appartenenti ad X non vuoti esiste una dipendenza funzionale Y->Z se per ogni copia di tuple (T1, T2) aventi lo stesso valore di Y risulta che hanno lo stesso valore di Z.
-- Impiegato->Stipendio, Progetto->Budget.
+- impiegato->stipendio, progetto->budget.
 
 **DIPENDENZE FUNZIONALI NELLA BASE DI DATI**
 Dato un impiegato lo stipendio sarà lo stesso, dato un progetto il budget sarà lo stesso. Se prendiamo la chiave K della relazione R si verifica che, essendo il valore di chiave unico si avrà una dipendenza funzionale tra la chiave e tutti i suoi attributi. Questo va in conflitto con ciò scritto nell'immagine, perchè possiamo determinare le dipendenze (3) e (4) che sono sbagliate.
-- (Impiegato, progetto)->funzione è una dipendenza completa.
-- (Impiegato, progetto)->stipendio/budget sono dipendenze parziali che causano le anomalie nella base di dati.
+- (impiegato, progetto)->funzione è una dipendenza completa.
+- (impiegato, progetto)->stipendio/budget sono dipendenze parziali che causano le anomalie nella base di dati.
 
 ![[Obsidian/Basi di Dati/PNG/D/D03/Esempio.png]]
 
