@@ -1,39 +1,56 @@
 **REGOLA 20/80**
-Il carico di lavoro sul DB è rappresentato dal volume dei dati e dalle operazioni che si stimano essere le più eseguite nel DB. Il 20% delle operazioni produce l'80% del carico.
+Il carico di lavoro sul DB è rappresentato
+- Dalla dimensione dei dati.
+- Dalle operazioni più significative che si stima vengano eseguite sul DB.
+- Regola 20-80: Il 20% delle operazioni produce l'80% del carico.
 
-**TABELLA DEI VOLUMI**
-La tabella dei volumi comprende il concetto, il tipo e il volume dei dati che dipende da:
-- Numero medio di istanze di ogni entità ed associazione.
+**CARICO DI LAVORO I**
+Il carico di lavoro per i volumi è espresso dalla tabella dei volumi.
+Essa comprende il concetto, che sarà il nome dell'entità/associazione, il tipo che esprime il tipo dell'entità/associazione/attributo e del volume dei dati.
+
+**VOLUME DEI DATI**
+Il volume dei dati comprende:
+- Numero medio di istanze di ogni entità e associazione.
 - Cardinalità e dimensioni di ciascun attributo.
-- Percentuali di copertura delle gerarchie.
+- Percentuale di copertura delle gerarchie.
 
-**TABELLA DELLE OPERAZIONI**
-La tabella delle operazioni comprende l'operazione, il suo tipo e la frequenza.
-- TIPO DI OPERAZIONE: Interattiva o batch.
-- FREQUENZA: Numero medio di esecuzioni in un certo periodo di tempo.
-- SCHEMA DI OPERAZIONE: Frammento di E/R interessato dall'operazione con cammino logico da percorrere per accedere alle nostre informazioni di interesse.
+![[Schema tabella volumi.png]]
+
+**CARICO DI LAVORO II**
+Il carico di lavoro per le operazioni è espresso dalla tabella delle operazioni.
+Essa comprende il tipo di operazione che sarà interattiva/batch, la frequenza, quindi il numero medio di esecuzioni di una certa operazione in un certo periodo di tempo e lo schema di operazione.
+
+**SCHEMA DI OPERAZIONE**
+Lo schema di operazione comprende un frammento di E/R che avrà cammino logico ed interessa le entità e le associazioni che verrano attraversate per compiere l'operazione.
+
+![[Schema tabella dati.png]]
+
+**CARICO DI LAVORO III**
+Con la tabella dei volumi e delle operazioni possiamo esprimere una stima del costo degli accessi di un operazione contando il numero di accessi alle istanze e associazioni necessarie per eseguire l'operazione. I dati saranno espressi nella tabella degli accessi.
 
 **TABELLA DEGLI ACCESSI**
-La tabella degli accessi comprende il concetto, gli accessi ed il tipo. Viene ricavata dalla tabella 
-dei volumi e delle operazioni. Si può stimare il costo un operazione contando il numero di accessi alle istanze e alle associazioni necessarie per eseguire l'operazione.
-- **IL PESO DEGLI ACCESSI IN SCRITTURA È DOPPIO RISPETTO A QUELLI IN LETTURA.**
+La tabella degli accessi comprende il concetto, quindi il nome dell'entità/associazione coinvolta, gli accessi che saranno il numero effettivo di accessi in quell'entità/associazione necessari per svolgere l'operazione e il tipo dell'accesso che sarà di scrittura o lettura.
+- Il peso degli accessi in **SCRITTURA** è doppio rispetto agli accessi in **LETTURA**.
+ 
+![[Schema tabella accessi.png]]
 
 **DATO DERIVATO**
-Un dato derivato è un dato che può essere ottenuto attraverso una serie di operazioni eseguita su altri dati. In questo tipo di esercizi il nostro scopo è valutare se conviene il dato derivato.
-- VANTAGGIO: quando accediamo al dato non è richiesta alcuna operazione per ricavare il valore dall'attributo dato che già risiede su un entità.
-- SVANTAGGIO: è comunque un attributo ridondante, quindi quando si modificano i dati dobbiamo eseguire operazioni di aggiornamento.
+Il dato derivato è un dato che può essere ricavato attraverso una serie di operazioni su altri dati. Esso è un dato ridonante, quindi ripetuto che però in certi casi può tornare utile e ne vale la pena valutare ciò.
+- VANTAGGIO: A tempo di accesso non serve nessuna operazione per ricavare il valore del dato derivato.
+- SVANTAGGIO: Essendo un attributo ridondante, quindi un attributo in più, vanno effettuate operazioni di aggiornamento per mantenere la consistenza dei dati.
 
-**ESEMPIO ESERCIZIO DATO DERIVATO**
-![[Esercizio DD.png]]
+**ESERCIZIO SU DATO DERIVATO**
 
-**FASE 1 - VANTAGGI/SVANTAGGI DATO DERIVATO**
-Con dato derivato:
-- Operazione 1: È immediata. Basta accedere all'entità cliente.
-- Operazione 2: Dobbiamo percorrere il nostro schema per poter svolgere la seconda operazione.
+![[Esercizio dato derivato.png]]
 
-Senza dato derivato:
-- Operazione 1: Dobbiamo percorrere il nostro schema per poter svolgere la prima operazione.
-- Operazione 2: È immediata. Non dobbiamo accedere al cliente per poter effettuare un deposito.
+Per prima cosa identifichiamo quando il dato derivato facilita l'operazione e quando no.
+In questo caso abbiamo con il dato derivato abbiamo:
+- OP1: Immediata, basta accedere all'entità cliente.
+- OP2: Siccome abbiamo il dato derivato dobbiamo aggiornare sia il bilancio che il bilancio netto. Facciamo il deposito sul conto corrente e aggiorniamo il bilancio netto.
+
+Mentre senza dato derivato abbiamo:
+- OP1: Siccome non abbiamo il dato derivato per leggere il bilancio netto dobbiamo accedere in conto corrente, quindi accediamo da cliente e andiamo in conto corrente.
+- OP2: Immediata, basta accedere al conto corrente.
 
 **FASE 2 - MANTENERE O MENO IL DATO DERIVATO**
 ![[Tabella dei Volumi.png]]

@@ -89,9 +89,17 @@ PROJECT [NUM-PROG] PROGETTO
 **DIVISIONE**
 Il risultato dell'operazione di divisione tra due relazioni r ed s con schemi R(X) ed S(Y) con Y sottoinsieme di X, è una relazione d con schema D(X MINUS Y) contenente le tuple di r associate a tutte le tuple di s.
 
-PROJECT [NOME, MODELLO]
-	(AUTO JOIN CLIENTE JOIN ACQUISTO)
+![[CD.png]]
+
+(PROJECT [NTESS, NOME, INDIRIZZO]
+	(CD JOIN CLIENTE JOIN ACQUISTO))
+MINUS
+(PROJECT [NTESS, NOME, INDIRIZZO]
+	(SELECT [DATA>1/1/1997 AND CASADISCO='MUTE']
+		(CD JOIN CLIENTE JOIN ACQUISTO)))
+
+PROJECT [NTESS, CODCD] 
+	(CLIENTE JOIN CD)
 /
-PROJECT [MODELLO]
-	SELECT [MARCA='AUDI'] AUTO
-	
+PROJECT [CODCD]
+	SELECT [AUTORE='DEPECHE MODE] CD
