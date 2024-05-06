@@ -42,34 +42,44 @@ Il dato derivato è un dato che può essere ricavato attraverso una serie di ope
 **ESERCIZIO SU DATO DERIVATO**
 
 ![[Esercizio dato derivato.png]]
+![[Tabelle.png]]
 
+**COSA CAMBIA CON O SENZA DATO DERIVATO NELLE OPERAZIONI?**
 Per prima cosa identifichiamo quando il dato derivato facilita l'operazione e quando no.
 In questo caso abbiamo con il dato derivato abbiamo:
 - OP1: Immediata, basta accedere all'entità cliente.
 - OP2: Siccome abbiamo il dato derivato dobbiamo aggiornare sia il bilancio che il bilancio netto. Facciamo il deposito sul conto corrente e aggiorniamo il bilancio netto.
 
-Mentre senza dato derivato abbiamo:
+Senza dato derivato abbiamo:
 - OP1: Siccome non abbiamo il dato derivato per leggere il bilancio netto dobbiamo accedere in conto corrente, quindi accediamo da cliente e andiamo in conto corrente.
 - OP2: Immediata, basta accedere al conto corrente.
 
-**FASE 2 - MANTENERE O MENO IL DATO DERIVATO**
-![[Tabella dei Volumi.png]]
+**TIPI DI OPERAZIONI: LETTURA E SCRITTURA**
+- In caso di lettura di un istanza contiamo una operazione di lettura.
+- In caso di aggiornamento di un istanza contiamo una di lettura e una di scrittura.
+- In caso di inserimento/cancellamento è necessaria una scrittura.
 
-- IN CASO DI LETTURA: Ci sarà una operazione di lettura.
-- IN CASO DI INSERIMENTO/CANCELLAZIONE: Ci sarà una operazione di scrittura.
-- IN CASO DI AGGIORNAMENTO: Ci sarà una operazione di lettura ed una di scrittura.
+**CALCOLARE IL NUMERO DI ACCESSI PER SPOSTARSI DA UN ENTITA ALL'ALTRA**
+ENTITA A = A.
+ENTITA B = B.
+ASSOCIAZIONE X = X.
 
-Per spostarsi da un entità A ad un entità B è necessario calcolare gli accessi che si hanno con l'associazione X. Per farlo dobbiamo guardare la cardinalità dell'associazione dal lato dell'entità A.
+Per spostarsi da A a B è necessario calcolare la cardinalità di accessi per X. Se troviamo il numero di accessi per X troviamo anche il numero di accessi per B. Abbiamo due casi possibili:
+- CARDINALITA MINIMA = MASSIMA: In questo caso allora avremo che questa coincide con la cardinalità degli accessi di X e B, quindi per ogni istanza di A abbiamo 2 istanze di X e 2 di B.
+- QUALSIASI ALTRO CASO: Dobbiamo fare il calcolo sfruttando la tabella dei volumi. Per trovare la cardinalità dell'associazione facciamo VolX/VolA. Quindi facciamo 30000/10000 = 3 istanze di X e B collegate.
 
-- **CASO 1:** Se la cardinalità minima coincide con la cardinalità massima allora coincide con la cardinalità degli accessi a X e B. Ci bastano quindi due accessi per spostarci da A a B.
-- **CASO 2:** In tutti gli altri casi dobbiamo fare il calcolo sfruttando la tabella dei **VOLUMI**, ci servono quindi il volume dati di X e A (se dobbiamo passare da A a B). Per trovare il numero di accessi ci basta fare vol.dati(X)/vol.dati(B) quindi 30000/15000=2.
-
-![[Cardinalità uguale.png]]
+![[Calcolo di cardinalità.png]]
 ![[Cardinalità diversa.png]]
 
-**ATTENZIONE!**
-> Il numero di accessi all'entità "destinazione" B **coincide** col numero di accessi minimi per passare dall'associazione X. Il numero di accessi all'entità "destinazione" B **non coincide** assolutamente con il suo volume dei dati. 
-> Questa informazione è utile se dobbiamo attraversare X partendo da B, quindi facendo B->A.
+ATTENZIONE!
+- Il numero di accessi all'entità "destinazione" coincide col numero di accessi dell'associazione X attraversata.
+- Il numero di accessi all'entità "destinazione" B **NON DIPENDE** dal volume dei dati di B, questi serviranno solo se ci dobbiamo spostare da B ad A e la nostra cardinalità minima =/= massima!
 
+**COMPLETARE LA TABELLA DEI VOLUMI**
+A volte la tabella dei volumi non contiene esplicitamente tutti i dati, questo perchè è facile dedurli.
+In questo esempio possiamo dedurre che se A ha 10000 dati possiamo fare 10000 * 3 e trovare il volume dei dati dell'associazione.
 
+![[Completare tabella volumi.png]]
 
+**RISOLUZIONE PROBLEMA**
+![[Con dato derivato.png]]![[Senza dato derivato.png]]
