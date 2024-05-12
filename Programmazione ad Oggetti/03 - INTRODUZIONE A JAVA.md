@@ -270,8 +270,8 @@ I package sono contenitori logici di classi, quindi a dei contenitori fisici di 
 Il package non è solo un contenitore di classi, ma determina anche un ambito di visibilità; tutte le entità definite senza modificatori sono visibili solo all'interno del package.
 
 **USO PACKAGE**
-Supponiamo di inserire la classe Contatore ed una classe Data all'interno del package utilità.
-Il nome completo delle classi diventa utilità.Contatore e utilità.Data. I file Contatore.class e Data.class si trovano in una directory chiamata utilità.
+Supponiamo di inserire una classe Contatore ed una classe Data all'interno del package utilità.
+Il nome completo delle classi diventerà utilità.Contatore e utilità.Data. I file Contatore.class e Data.class quindi saranno contenuti in utilità.
 
 Quando si vuole usare una classe inserita in un package basta specificare il percorso completo, quindi la classe contatore contenuto nel package utilità diventa:
 
@@ -301,7 +301,6 @@ import utilità.*;
 ```
 
 **INSERIRE CLASSI IN PACKAGE**
-Per inserire una classe in un package basta specificare all'inizio del file la direttiva:
 
 ``` Java
 package utilità; // inserisco la classe Contatore nel package utilità
@@ -310,8 +309,6 @@ public class Contatore
 	...
 }
 ```
-
-Per inserire una classe in un sottopackage possiamo fare la stessa roba aggiungendo i punti:
 
 ``` Java
 package utilità.file // inserisco la classe nel sottopackage file
