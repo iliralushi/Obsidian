@@ -262,7 +262,7 @@ $ javadoc -author -version -d doc ContatoreDoc.java
 ```
 
 **PACKAGE**
-I package sono contenitori logici di classi, quindi a dei contenitori fisici di file .class
+I package sono contenitori logici di classi, quindi a dei contenitori fisici di file .class;
 - Directory nel file system.
 - Corrispondenza anche nel nome.
 - Un package può contenere classi e sottopackage.
