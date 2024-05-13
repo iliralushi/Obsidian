@@ -9,7 +9,7 @@ I tipi primitivi disponibili in Java sono:
 - Byte, short, int, long, float, double, boolean, char.
 
 **TIPI RIFERIMENTO**
-È un oggetto istanza di una classe referenziato da una variabile. Si usa null per indicare nessun riferimento.
+È un oggetto, istanza di una classe referenziato da una variabile. Si usa null per indicare nessun riferimento.
 
 **ASSEGNAMENTO**
 L'assegnamento viene fatto tramite l'operatore uguale.
@@ -262,7 +262,7 @@ $ javadoc -author -version -d doc ContatoreDoc.java
 ```
 
 **PACKAGE**
-I package sono contenitori logici di classi, quindi a dei contenitori fisici di file .class;
+I package sono contenitori logici di classi, quindi dei contenitori fisici di file .class;
 - Directory nel file system.
 - Corrispondenza anche nel nome.
 - Un package può contenere classi e sottopackage.
@@ -315,5 +315,70 @@ package utilità.file // inserisco la classe nel sottopackage file
 public class FileComparator
 {
 	...
+}
+```
+
+**VARIABILI DI CLASSE**
+Sono le variabili definite attraverso la keyword static. Esistono indipendentemente dall'esistenza di oggetti in quella classe e sono condivise tra tutti gli oggetti.
+
+**VARIABILI DI METODI**
+Sono i metodi definiti attraverso la keyword static. Esistono indipendentemente dall'esistenza di oggetti in quella classe, possono accedere solo a variabili di classe e possono essere invocati anche senza creare un oggetto di quella classe.
+- Classe.metodo();
+
+**COSTANTI**
+Le costanti vengono definite attraverso la keyword final.
+
+**RIFERIMENTI AD OGGETTI**
+Le variabili di tipo riferimento contengono un riferimento ad oggetto. Un assegnamento come
+p2 = p1; non duplica p2 in p1 ma bensì p2 prenderà come riferimento il riferimento di p1.
+
+``` Java
+Contatore p1 = new Contatore();
+Contatore p2 = p1;
+
+p2.inc();
+System.out.println(p1.getVal());
+// Stampa 1, entrambi valgono 1.
+```
+
+``` Java
+Contatore p1 = new Contatore();
+Contatore p2 = (Contatore)p1.clone();
+// Possiamo clonare un oggetto usando il metodo clone()
+// Se si incrementa p1 allora p2 vale ancora 0.
+```
+
+``` Java
+p1.equals(p2);
+// Possiamo usare il metodo equals per confrontare oggetti
+// Se usiamo l'operatore di confronto ci paragona i riferimenti
+// che restituisce true se entrambi puntano allo stesso oggetto
+```
+
+**PASSAGGIO PARAMETRI**
+Tutti i parametri in Java sono passati per copia.
+- Se di tipo primitivo si effettua il passaggio per valore.
+- Se di tipo oggetto si effettua il passaggio per indirizzo.
+
+**GARBAGE COLLECTOR**
+Il garbage collector è un componente dell'interprete di Java che si occupa di liberare memoria non più accessibile. Un esempio è il seguente:
+
+``` Java
+Contatore p1 = new Contatore();
+c = null;
+// Il garbage collector agirà liberando automaticamente la memoria
+```
+
+**THIS**
+La keyword this serve per indicare l'oggetto stesso che sta eseguendo il codice. Si usa per:
+- Specificare variabili e metodi di istanza, utile in caso di ambiguità.
+- Chiamare costruttori della stessa classe.
+
+``` Java
+class Contatore
+{
+	private int val;
+	public Contatore(int val) {this.val = val;}
+	public Contatore() {this(0);}
 }
 ```
