@@ -41,10 +41,6 @@ public class Esempio2
 
 // Stampa:
 // "La mia macchina ha 5 posti e raggiunge la velocita' di 150 km/h." 
-
-// Se avessi scritto
-int intero = miaMacchina.numeroPosti;
-// Il compilatore mi avrebbe dato errore.
 ```
 
 **EREDITARIETÀ**
