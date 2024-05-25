@@ -103,9 +103,6 @@ In Java si chiamano metodi, possono essere definiti solo dentro una classe e pos
 **CLASSE**
 Insieme di attributi e metodi. È un tipo di dato astratto, template che definisce gli attributi e i metodi di tutte le istanze della classe. Essendo un tipo quindi si possono dichiarare variabili. Si creano oggetti usando la keyword new.
 
-**CLASSE WRAPPER**
-È una classe contenitore per uniformare i tipi di dati primitivi rispetto alle classi.
-
 **METODO COSTRUTTORE**
 Ogni classe ha uno o più metodi costruttore che vengono chiamati automaticamente quando viene creato l'oggetto e serve per inizializzare tutti gli attributi di una classe specifica. Se il programmatore non scrive niente viene sostituito da un costruttore vuoto con 0 parametri.
 - Ha lo stesso nome della classe.

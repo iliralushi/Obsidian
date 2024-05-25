@@ -5,10 +5,11 @@ Esse seguono la filosofia Object-Oriented; ogni componente è implementato trami
 - javax.swing
 
 **CLASSI SWING**
-Tutti i componenti grafici sono sottoclassi di Component. Le classi Component sono AWT, per quello si dice che le classi di Swing derivano da AWT. Anche i Container sono sottoclassi di Component.
+Tutti i componenti grafici sono sottoclassi di Component. Le classi Component sono AWT.
+Container invece sono sottoclassi di Component.
 
 **JFRAME**
-La classe JFrame è quella che implementa la finestra della nostra applicazione. Ha un bordo ed una barra in alto con pulsanti per le azioni sulla finestra. Lo stile dipende dal Window Manager del sistema, anche se è possibile cambiarlo.
+La classe JFrame implementa la finestra della nostra applicazione. Ha un bordo ed una barra in alto con pulsanti per le azioni sulla finestra. Lo stile dipende dal Window Manager del sistema, anche se è possibile cambiarlo.
 
 **POSIZIONE E DIMENSIONI DEL FRAME**
 Se creiamo un oggetto JFrame senza specificare nulla creiamo un frame piccolissimo. Possiamo quindi impostare la posizione e la dimensione iniziale del frame con dei metodi.
@@ -110,7 +111,7 @@ public class EsSwing3
 ```
 
 **JLABEL**
-La classe JLabel rappresenta un etichetta, quindi una stringa.
+La classe JLabel implementa un etichetta, quindi una stringa.
 - Posso cambiare la scritta della stringa.
 - Posso cambiare la posizione della stringa.
 - Posso ricavare il contenuto della label.
@@ -253,7 +254,7 @@ public class Es9Panel implements ActionListener extends JPanel
 Le operazioni sulle finestre generano un WindowEvent. Gli eventi di finestra sono gestiti dai metodi dichiarati dall'interfaccia WindowListener.
 
 **JTEXTFIELD**
-La classe JTextField offre un campo di testo, usabile per scrivere e visualizzare una riga di testo.
+La classe JTextField implementa un campo di testo, usabile per scrivere e visualizzare una riga di testo.
 - Il campo di testo può essere editabile o no.
 - Il testo è accessibile con getText() / setText().
 
@@ -297,15 +298,58 @@ public class Es10Panel implements ActionListener extends JPanel
 ```
 
 **JCHECKBOX**
-La classe JCheckBox permette di creare appunto una checkbox, quindi una casella di opzione che può essere selezionata o deselezionata.
+La classe JCheckBox implementa una casella di opzione che può essere selezionata o deselezionata.
 - Lo stato è verificabile con isSelected() e modificabile con setSelected().
 
 **JCHECKBOX EVENTI**
 Ogni volta che lo stato della casella cambia viene si generano:
 - **ACTIONEVENT**: Come per ogni pulsante.
 - **ITEMEVENT**: Gestito da ItemListener. Conviene gestire questo perchè più specifico.
-
-L'ItemListener dichiara il metodo public void itemStateChanged(ItemEvent e) che deve essere implementato dalla classe che fa da ascoltatore.
+- L'ItemListener contiene un metodo che dev'essere dichiarato dalla classe che fa da ascoltatore. Il metodo è public void itemStateChanged(ItemEvent e).
+- Il metodo e.getItemSelectable() restituisce un riferimento all'oggetto sorgente dell'evento.
 
 **JRADIOBUTTON**
-La classe JRadioButton permette di creare una checkbox dove può essere attiva solo una spunta per volta.
+La classe JRadioButton implementa una casella di opzione che fa parte di un gruppo.
+- In ogni istante può essere attiva una sola casella del gruppo.
+- Conviene gestire l'ActionEvent piuttosto che i due ItemEvent (gestione più semplice).
+
+**RAGGRUPPARE JRADIOBUTTONS**
+Per includere tutto in un gruppo dobbiamo:
+- Creare i JRadioButton che servono.
+- Creare un oggetto ButtonGroup.
+- Inserire i JRadioButton all'interno del ButtonGroup.
+
+**JLIST**
+La classe JList implementa una lista di valori fra cui si può sceglierne uno o più. L'evento generato da JList è un ListSelectionEvent, gestito da un ListSelectionListener.
+- Il listener deve implementare il metodo void valueChanged(ListSelectionEvent e).
+- Per recuperare la prima voce della lista si usa getSelectedValue().
+- getSelectedValuesList() restituisce un oggetto che contiene tutte le voci della lista.
+
+**JSCROLLPANE**
+La classe JScrollPane implementa una barra di scorrimento. Nel caso della JList si fissa un numero massimo di elementi visualizzabili per la lista (metodo setVisibleRowCount(int n)).
+
+**JCOMBOBOX**
+La classe JComboBox implementa una lista di valori a discesa in cui si può sceglierne uno, oppure scrivere un valore diverso.
+- Per configurare l'elenco delle voci proposte si usa il metodo addItem().
+- Per recuperare la voce scelta o scritta si usa getSelectedItem().
+- L'evento generato dal JComboBox che ci conviene gestire sarà di tipo ActionEvent.
+- Per aggiungere uno scroller dobbiamo specificare il numero massimo di righe visibili.
+
+**JTABLE**
+La classe JTable implementa il componente tabella. Ogni tabella implementata con JTable recupera i dati da rappresentare tramite un modello. Questo modello sarà un istanza della classe che dovrà implementare l'interfaccia TableModel.
+- Per modificare i valori del modello è necessario implementare il metodo setValueAt().
+- Dopo aver modificato i valori informiamo la tabella delle modifiche tramite il metodo fireTableDataChanged().
+
+**TABLEMODEL**
+Questa interfaccia mette a disposizione metodi per sapere quante righe/colonne servono, qual'è il valore di ogni singola cella, se le celle sono editabili etc... La classe astratta AbstractTableModel invece implementa la maggior parte dei metodi di TableModel aggiungendo questi 3 metodi:
+- public int getRowCount().
+- public int getColumnCount().
+- public Object getValueAt(int row, int column).
+
+**MENU IN SWING**
+Swing mette a disposizione alcune classi per creare menu in Java.
+- **JMENUITEM**: Rappresenta la voce del menu.
+- **JMENU**: Rappresenta il menu.
+- **JMENUBAR**: Rappresenta la barra dei menu.
+- L'evento generato dal menu è di tipo ActionEvent.
+
