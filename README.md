@@ -1,3 +1,3 @@
 # Appunti corso di Informatica Unimore
 
-![Draven](Draven.jpg)
+![Draven1](Draven1.jpg)
