@@ -1,26 +1,26 @@
-**JAVA SWING**
-Sono librerie evolute da AWT che ci permettono di creare interfacce grafiche.
-Esse seguono la filosofia Object-Oriented; ogni componente è implementato tramite una classe. Da questa classe puoi creare oggetti e specializzarle. I package da inserire sono:
+**SWING**
+Swing è una libreria che deriva da AWT. Ci permettono di creare GUI. La programmazione delle GUI segue la filosofia ad oggetti, quindi ogni componente di Swing è una classe da cui puoi creare oggetti e specializzarli. I package da implementare sono:
 - java.awt
 - javax.swing
 
-**CLASSI SWING**
-Tutti i componenti grafici sono sottoclassi di Component. Le classi Component sono AWT.
-Container invece sono sottoclassi di Component.
+**GERARCHIA SWING**
+I componenti di Swing sono sottoclassi di Component (AWT). Anche i Container sono sottoclassi di Component.
 
 **JFRAME**
-La classe JFrame implementa la finestra della nostra applicazione. Ha un bordo ed una barra in alto con pulsanti per le azioni sulla finestra. Lo stile dipende dal Window Manager del sistema, anche se è possibile cambiarlo.
+La classe JFrame implementa la finestra generale dell'applicazione.
+- Contiene i bordi, una barra con i pulsanti di interazione con la finestra.
+- Lo stile dipende dal Window Manager dell'SO, anche se si può cambiare.
 
-**POSIZIONE E DIMENSIONI DEL FRAME**
-Se creiamo un oggetto JFrame senza specificare nulla creiamo un frame piccolissimo. Possiamo quindi impostare la posizione e la dimensione iniziale del frame con dei metodi.
+**DIRETTIVE PER CREARE UN JFRAME**
+Creare un oggetto JFrame senza specificare nulla non porta ad un buon risultato. Dobbiamo specificare posizione e dimensione attraverso i seguenti metodi:
 
 ``` Java
-public void setBounds(int x, int y, int width, int length)
-
-// Possiamo settare entrambe le cose separatamente
-public void setLocation(int x, int y) // Posizione
-public void setSize(int width, int length) // Dimensione
+public void setBounds(int x, int y, int width, int length) // Tutto
+public void setLocation(int x, int y) // Solo posizione
+public void setSize(int width, int length) // Solo dimensione
 ```
+
+**ESEMPIO JFRAME**
 
 ``` Java
 import java.awt.*;
@@ -42,19 +42,14 @@ public class EsSwing1
 }
 ```
 
-**CHIUSURA DELL'APPLICAZIONE**
-È possibile specificare cosa deve fare il frame quando si preme il pulsante di chisura della finestra con il metodo elencato sotto. Il parametro operation può assumere i seguenti valori:
+**CHIUSURA DEL JFRAME**
+Specifichiamo il comportamento del frame quando premiamo il pulsante di chiusura attraverso il metodo setDefaultCloseOperation(int operation). Operation può avere i seguenti valori:
 - **DO_NOTHING_ON_CLOSE**: Non fa niente.
 - **HIDE_ON_CLOSE**: Nasconde il frame.
 - **DISPOSE_ON_CLOSE**: Nasconde e distrugge il frame.
 - **EXIT_ON_CLOSE**: Termina l'applicazione.
 
-``` Java
-public void setDefaultCloseOperation(int operation)
-```
-
-**ESTENSIONE JFRAME**
-Possiamo estendere la classe JFrame e personalizzarla.
+**PERSONALIZZAZIONE DELLA CLASSE JFRAME**
 
 ``` Java
 import java.awt.*;
@@ -64,7 +59,7 @@ public class MyFrame extends JFrame
 {
 	public MyFrame() {this("")}
 	// Costruttore senza parametri, il MyFrame sarà inizializzato
-	// senza nome.
+	// senza nome se non si specificano parametri.
 	
 	public MyFrame(String titolo)
 	{
@@ -72,8 +67,8 @@ public class MyFrame extends JFrame
 		setBounds(200, 100, 300, 150);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	// Costruttore con un parametro titolo, il MyFrame sarà inizializzato
-	// con il nome che inseriamo.
+	// Costruttore con un parametro, il MyFrame sarà inizializzato
+	// con il nome che inseriamo nel parametro. 
 }
 
 public class EsSwing2
@@ -88,33 +83,14 @@ public class EsSwing2
 
 **JPANEL**
 La classe JPanel implementa un pannello da inserire dentro un frame. Sul pannello puoi:
-- Inserire componenti grafici come JLabel, JButtons, immagini (oggetti). Per aggiungere i componenti devo sfruttare il costruttore del pannello.
+- Inserire componenti grafici attraverso il metodo add()
 - Disegnare.
 
-**INSERIRE COMPONENTI NEL JFRAME**
-In Swing aggiungiamo direttamente al nostro JFrame i componenti. In questo esempio aggiungiamo un JPanel attraverso il metodo add().
-
-``` Java
-import java.awt.*;
-import javax.swing.*;
-
-public class EsSwing3
-{
-	public static void main(String[] v)
-	{
-		MyFrame f = new MyFrame("Esempio 3");
-		JPanel panel = new JPanel();
-		f.add(panel);
-		f.setVisible(true);
-	}
-}
-```
-
 **JLABEL**
-La classe JLabel implementa un etichetta, quindi una stringa.
-- Posso cambiare la scritta della stringa.
-- Posso cambiare la posizione della stringa.
-- Posso ricavare il contenuto della label.
+La classe JLabel implementa un etichetta. A differenza di una stringa disegnata:
+- Si può cambiare la scritta.
+- Si può cambiare la posizione.
+- Può dirmi che scritta contiene.
 
 ``` Java
 import java.awt.*;
@@ -145,35 +121,35 @@ public class EsSwing7
 ```
 
 **PROGRAMMAZIONE AD EVENTI**
-Negli esempi visti fino ad ora l'utente poteva soltanto guardare e non interagire con la GUI. Java mette a disposizione la programmazione ad eventi per poter gestire l'interazione tra utente:
+Java mette a disposizione la programmazione ad eventi per poter far interagire l'utente con la GUI:
 - Il componente viene associato ad un ascoltatore.
 - Quando si verifica un evento, l'ascoltatore viene notificato.
 - L'ascoltatore esegue il codice corrispondente.
 
 **ASCOLTATORE**
-Un ascoltatore è un oggetto che implementa un interfaccia di tipo Listener.
+Un oggetto diventa **ASCOLTATORE** quando implementa un interfaccia di tipo **LISTENER**.
 
 **JBUTTON**
-La classe JButton implementa un bottone che può essere premuto dall'utente.
-- Quando viene premuto genera un evento di classe ActionEvent.
-- L'evento viene quindi mandato all'ascoltatore associato all'evento.
-- L'ascoltatore dell'evento si occupa di gestirlo eseguendo codice. Deve implementare l'interfaccia ActionListener e il metodo actionPerformed.
+La classe JButton implementa un classico bottone, premibile dall'utente.
+- L'evento generato dal JButton è di tipo ActionEvent, viene quindi inviato all'ascoltatore.
+- L'ascoltatore deve implementare l'interfaccia ActionListener ed implementare il metodo sotto.
+- L'ascoltatore può essere il pannello stesso come può essere un oggetto non inerente alla GUI.
+- Possiamo usare lo stesso ascoltatore per tutti gli oggetti JButton oppure ascoltatori diversi per pulsanti diversi.
 
 ``` Java
 void actionPerformed(ActionEvent e)
-// Gestisce l'evento
 ```
 
 **JBUTTON ES I**
-Il codice crea un applicazione con un etichetta ed un pulsante. Ogni volta che l'utente preme il pulsante l'etichetta passa da Tizio a Caio e viceversa. L'ascoltatore del bottone in questo caso è il pannello stesso.
+Il codice crea un applicazione con un etichetta ed un pulsante. Ogni volta che il pulsante viene premuto l'etichetta passa da Tizio a Caio e viceversa.
 
 ``` Java
 import java.awt.event.*;
-import javax.swing;
+import javax.swing.*;
 
 public class Es8Panel implements ActionListener extends JPanel
 {
-	private JLabel l; // deve essere visibile a tutti i metodi
+	private JLabel l; // visibilità a tutti i metodi
 	
 	public Es8Panel()
 	{
@@ -181,9 +157,8 @@ public class Es8Panel implements ActionListener extends JPanel
 		l = new JLabel("Tizio");
 		add(l);
 		JButton b = new JButton("Tizio/Caio");
-		b.addActionListener(this);
-		// Registra l'oggetto panel come ascoltatore degli eventi
-		this.add(b); // Aggiunge il bottone al pannello
+		b.addActionListener(this); // il panel diventa ascoltatore
+		this.add(b); // aggiunge il bottone al panel
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -211,7 +186,7 @@ public class EsSwing8
 ```
 
 **JBUTTON ES II**
-Il codice crea un applicazione con due bottoni che permettono di scegliere il colore dello sfondo tra rosso ed azzurro.
+Il codice implementa un applicazione con due bottoni, che ci permettono di scegliere il colore dello sfondo. Possiamo anche comparare i riferimenti del bottone premuto ai vari bottoni usando il metodo getSource().
 
 ``` Java
 public class Es9Panel implements ActionListener extends JPanel
@@ -223,9 +198,8 @@ public class Es9Panel implements ActionListener extends JPanel
 		super();
 		b1 = new JButton("Rosso");
 		b2 = new JButton("Azzurro");
-		b1.addActionListener(this);
-		b2.addActionListener(this);
-		// Il pannello fa da ascoltatore per entrambi i pulsanti
+		b1.addActionListener(this); // panel fa da ascoltatore per b1
+		b2.addActionListener(this); // panel fa da ascoltatore per b2
 		add(b1);
 		add(b2);
 	}
@@ -233,8 +207,7 @@ public class Es9Panel implements ActionListener extends JPanel
 	public void actionPerformed(ActionEvent e)
 	{
 		String nome = e.getActionCommand();
-		// Restituisce la stringa associata all'evento, quindi
-		// la stringa del bottone
+		// recupera il nome del bottone che ha generato l'evento
 
 		if (nome.equals("Rosso"))
 			setBackground(Color.red);
@@ -242,30 +215,17 @@ public class Es9Panel implements ActionListener extends JPanel
 			setBackground(Color.cyan);
 	}
 }
-
-// In questo caso usiamo un listener per entrambi i bottoni, è meglio fare
-// un listener per bottone.
-
-// getSource() restituisce il riferimento all'oggetto che ha generato
-// l'evento.
 ```
 
-**EVENTI DI FINESTRA**
-Le operazioni sulle finestre generano un WindowEvent. Gli eventi di finestra sono gestiti dai metodi dichiarati dall'interfaccia WindowListener.
-
 **JTEXTFIELD**
-La classe JTextField implementa un campo di testo, usabile per scrivere e visualizzare una riga di testo.
-- Il campo di testo può essere editabile o no.
-- Il testo è accessibile con getText() / setText().
+La classe JTextField implementa un campo di testo in cui puoi scrivere.
+- Il campo di testo può essere editabile.
+- getText()/setText() servono per accedere al testo.
+- Genera un DocumentEvent ed un ActionEvent. Se è sufficiente registrare i cambiamenti solo quando si preme ENTER conviene gestire l'ActionEvent.
 
-**EVENTI JTEXTFIELD**
-JTextField è parte di un oggetto Document.
-- Ogni volta che il testo cambia si genera un DocumentEvent.
-- Se è sufficiente registrare i cambiamenti avvenuti col tasto INVIO basta gestire l'ActionEvent.
-
-**JTEXTFIELD ES I**
-Un applicazione che comprende un pulsante e due campi di testo. Quando si preme il pulsante il testo del secondo campo viene cambiato e reso uguale a quello del primo.
-Non usiamo DocumentEvent, l'unico evento è il pulsante premuto.
+**JTEXTFIELD ES**
+Questo codice implementa un applicazione che comprende un pulsante e due campi di testo (uno per scrivere, uno per leggere). Quando si preme il pulsante il testo del secondo campo viene cambiato e reso uguale al primo.
+- L'unico evento è il pulsante premuto, non si usa DocumentEvent.
 
 ``` Java
 import java.awt.event.*;
@@ -298,53 +258,60 @@ public class Es10Panel implements ActionListener extends JPanel
 ```
 
 **JCHECKBOX**
-La classe JCheckBox implementa una casella di opzione che può essere selezionata o deselezionata.
-- Lo stato è verificabile con isSelected() e modificabile con setSelected().
+La classe JCheckBox implementa una casella di opzione.
+- La casella può essere selezionata o deselezionata.
+- Lo stato è verificabile/modificabile con isSelected()/setSelected().
 
 **JCHECKBOX EVENTI**
-Ogni volta che lo stato della casella cambia viene si generano:
-- **ACTIONEVENT**: Come per ogni pulsante.
-- **ITEMEVENT**: Gestito da ItemListener. Conviene gestire questo perchè più specifico.
-- L'ItemListener contiene un metodo che dev'essere dichiarato dalla classe che fa da ascoltatore. Il metodo è public void itemStateChanged(ItemEvent e).
-- Il metodo e.getItemSelectable() restituisce un riferimento all'oggetto sorgente dell'evento.
+- Quando lo stato della casella cambia vengono generati un ActionEvent ed un ItemEvent, solitamente conviene gestire l'ItemEvent.
+- L'ItemListener dichiara Il metodo public void itemStateChanged(ItemEvent e).
+- e.getItemSelectable() restituisce un riferimento all'oggetto sorgente dell'evento.
 
 **JRADIOBUTTON**
-La classe JRadioButton implementa una casella di opzione che fa parte di un gruppo.
-- In ogni istante può essere attiva una sola casella del gruppo.
-- Conviene gestire l'ActionEvent piuttosto che i due ItemEvent (gestione più semplice).
+La classe JRadioButton implementa una casella di opzione.
+- Le caselle di opzioni fanno parte di un singolo gruppo.
+- Può essere attiva solo una casella di opzione.
+- Si creano due ItemEvent ed un ActionEvent. Conviene gestire l'ultimo.
 
 **RAGGRUPPARE JRADIOBUTTONS**
-Per includere tutto in un gruppo dobbiamo:
-- Creare i JRadioButton che servono.
-- Creare un oggetto ButtonGroup.
-- Inserire i JRadioButton all'interno del ButtonGroup.
+Per includere tutte le caselle di opzione in un gruppo serve:
+- Creare le caselle di opzioni necessarie.
+- Creare un oggetto di tipo ButtonGroup.
+- Inserire le caselle di opzioni al gruppo.
 
 **JLIST**
-La classe JList implementa una lista di valori fra cui si può sceglierne uno o più. L'evento generato da JList è un ListSelectionEvent, gestito da un ListSelectionListener.
-- Il listener deve implementare il metodo void valueChanged(ListSelectionEvent e).
-- Per recuperare la prima voce della lista si usa getSelectedValue().
-- getSelectedValuesList() restituisce un oggetto che contiene tutte le voci della lista.
+La classe JList implementa una lista di valori fra cui si può sceglierne uno o più.
+
+**JLIST EVENTI**
+- Quando si sceglie una voce si genera un evento di tipo ListSelectionEvent, gestito da un ListSelectionListener.
+- Il listener implementa il metodo void valueChanged(ListSelectionEvent e).
+- Per recuperare una voce si usa getSelectedValue(), per recuperare l'oggetto che contiene tutte le voci della lista usi getSelectedValueList().
 
 **JSCROLLPANE**
-La classe JScrollPane implementa una barra di scorrimento. Nel caso della JList si fissa un numero massimo di elementi visualizzabili per la lista (metodo setVisibleRowCount(int n)).
+La classe JScrollPane implementa una barra di scorrimento.
+- Bisogna inserire la lista all'interno dello scroll pane.
+- Bisogna fissare un numero massimo di elementi visualizzabili per la lista, tramite il metodo setVisibleRowCount(int n).
 
 **JCOMBOBOX**
-La classe JComboBox implementa una lista di valori a discesa in cui si può sceglierne uno, oppure scrivere un valore diverso.
-- Per configurare l'elenco delle voci proposte si usa il metodo addItem().
-- Per recuperare la voce scelta o scritta si usa getSelectedItem().
-- L'evento generato dal JComboBox che ci conviene gestire sarà di tipo ActionEvent.
-- Per aggiungere uno scroller dobbiamo specificare il numero massimo di righe visibili.
+La classe JComboBox implementa una lista di valori a discesa.
+- Si può scegliere un valore oppure scrivere un valore diverso.
+- Per configurare l'elenco delle voci proposte si usa il metodo addItem(), mentre per recuperare la voce scritta/scelta si usa il metodo getSelectedItem().
+- L'evento migliore da gestire è l'ActionEvent.
 
 **JTABLE**
-La classe JTable implementa il componente tabella. Ogni tabella implementata con JTable recupera i dati da rappresentare tramite un modello. Questo modello sarà un istanza della classe che dovrà implementare l'interfaccia TableModel.
-- Per modificare i valori del modello è necessario implementare il metodo setValueAt().
-- Dopo aver modificato i valori informiamo la tabella delle modifiche tramite il metodo fireTableDataChanged().
+La classe JTable implementa una tabella. 
+Ogni JTable recupera i dati da rappresentare tramite un modello, istanza di una classe che implementa l'interfaccia TableModel.
 
 **TABLEMODEL**
-Questa interfaccia mette a disposizione metodi per sapere quante righe/colonne servono, qual'è il valore di ogni singola cella, se le celle sono editabili etc... La classe astratta AbstractTableModel invece implementa la maggior parte dei metodi di TableModel aggiungendo questi 3 metodi:
-- public int getRowCount().
-- public int getColumnCount().
-- public Object getValueAt(int row, int column).
+L'interfaccia mette a disposizione metodi per trovare il numero di righe/colonne, il valore di ogni singola cella o se sono editabili etc...
+- Per modificare i valori del modello implementiamo setValueAt().
+- Dopo aver modificato informiamo la tabella delle modifiche tramite il metodo fireTableDataChanged().
+
+**ABSTRACTTABLEMODEL**
+La classe astratta AbstractTableModel implementa la maggior parte dei metodi del TableModel, lascia al programmatore da implementare questi tre metodi:
+- public int getRowCount();
+- public int getColumnCount();
+- public Object getValueAt(int row, int column);
 
 **MENU IN SWING**
 Swing mette a disposizione alcune classi per creare menu in Java.
