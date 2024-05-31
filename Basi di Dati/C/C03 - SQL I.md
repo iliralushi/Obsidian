@@ -1,19 +1,20 @@
-**TIPI DI DATI SQL-2**
+**TIPI DI DATI SQL**
 - **STRINGHE**: CHAR (N), VARCHAR (N).
-- **STRINGHE DI BIT**: BIT(N), VARBIT(N).
-- **NUMERICI**: NUMERIC (Prec, Scale), INTEGER, SMALLINT.
+- **STRINGHE DI BIT 0/1**: BIT(N), VARBIT(N).
+- **NUMERICI**: NUMERIC (Precision, Scale), INTEGER, SMALLINT.
 - **NUMERICI APPROSSIMATI**: REAL, DOUBLE.
 - **DOMINI SPECIALI**: DATE, TIME(N), TIMESTAMP, INTERVAL.
 
-**PRECISION E SCALE (TIPO NUMERIC)**
+**PRECISION E SCALE**
 - **PRECISION**: Numero di cifre significative per tutto il numero.
 - **SCALE**: Numero di cifre decimali.
 - Il numero 23.5141 avrà 6 cifre di precision e 4 di scale.
 
 **IL VALORE NULL**
 Null è un valore polimorfo (appartiene a tutti i domini) col significato di valore non noto.
-- Il valore esiste ma è ignoto al database, come per la data di nascita.
-- Il valore è inapplicabile, come per il numero patente per minorenni.
+I casi sono i seguenti:
+- Il valore esiste ma è ignoto al database (data di nascita).
+- Il valore è inapplicabile (numero patente per minorenni).
 
 **DEFINIZIONE DELLE TABELLE**
 Una tabella è costituita da:
@@ -31,15 +32,19 @@ CREATE TABLE <nome-tabella>
 ```
 
 **VINCOLI DI COLONNA**
-- **NOT NULL**: L'attributo non può assumere il valore null.
-- **UNIQUE**: Unicità dell'attributo.
-- **PRIMARY KEY**: L'attributo è la chiave primaria.
-- **CHECK**: Esprime un generico vincolo sulla colonna tramite un espressione logico-relazionale
-- **REFERENCES**: Esprime il vincolo della FK.
+- **NOT NULL**: L'attributo non può assumere null.
+- **UNIQUE**: L'attributo sarà unico.
+- **PRIMARY KEY**: L'attributo sarà la chiave primaria.
+- **CHECK**: Esprime un vincolo sulla colonna tramite espressione logico-relazionale.
+- **REFERENCES**: Esprime il vincolo della Foreign Key.
 
 **VINCOLI DI TABELLA**
-Funzionano in modo simile ai vincoli di colonna, però agiranno su tutta la tabella. Possiamo specificare le colonne su cui devono agire. Viene aggiunto un nuovo costrutto:
-- **FOREIGN KEY (lista-colonne) REFERENCES tab [(lista-colonne)]
+Sono gli stessi dei vincoli di colonna, però agiranno su tutta la tabella.
+Possiamo specificare le colonne su cui agire. I costrutti sono i seguenti:
+- **UNIQUE (lista-colonne)**: La combinazione dei valori delle colonne è unica per tutte le tuple della tabella.
+- **PRIMARY KEY (lista-colonne)**: Chiave primaria della tabella.
+- **FOREIGN KEY (lista-colonne) REFERENCES TAB (lista-colonne):** Foreign key.
+- **CHECK (condizione)**: Predicato che deve essere soddisfatto per tutte le tuple della tabella.
 
 **ESEMPIO I**
 
@@ -65,14 +70,15 @@ CREATE TABLE ESAME
 	COD-CORSO CHAR(6),
 	DATA DATE NOT NULL,
 	VOTO SMALLINT NOT NULL,
-	PRIMARY KEY(MATR, COD-CORSO)
+	PRIMARY KEY(MATR, COD-CORSO),
 	FOREIGN KEY (MATR) REFERENCES STUDENTI,
 	FOREIGN KEY (COD-CORSO) REFERENCES CORSO
 )
 ```
 
-**CHIAVI ALTERNATIVE**
-Per esprimere le chiavi alternative usiamo i vincoli di colonna NOT NULL e UNIQUE.
+**ALTERNATIVE KEYS**
+In SQL non esiste il costrutto ALTERNATIVE KEY.
+Usiamo i costrutti già presenti NOT NULL & UNIQUE.
 
 ``` SQL
 CREATE TABLE STUDENTE
@@ -86,13 +92,12 @@ CREATE TABLE STUDENTE
 ```
 
 **DICHIARATIVITA DI SQL**
-In SQL l'utente specifica **QUALE** informazione è di suo interesse ma **NO** come estrarla dai dati.
-Il sistema costruisce una strategia di accesso (**QUERY OPTIMIZATION**).
+In SQL l'utente specifica quale informazione è di suo interesse ma non specifica come estrarla dai dati. Il sistema costruisce una strategia di accesso. (Per quello usiamo SELECT e FROM assieme).
 
-**STRUTTURA DI SQL**
-- **SELECT**: Selezione.
-- **FROM**: Proiezione.
-- **WHERE**: Usato per estrarre solo i campi che rispettano una certa condizione.
+**STRUTTURA BASE DI SQL**
+- **SELECT**
+- **FROM**
+- **WHERE**
 
 ``` SQL
 SELECT *
@@ -101,17 +106,18 @@ WHERE C-DIP = 'Log'
 ```
 
 **BLOCCHI SQL PER LA MODIFICA**
-- **DELETE**: Cancellazione.
-- **INSERT**: Inserimento.
-- **UPDATE**: Modifica.
+- **DELETE (FROM)**
+- **INSERT (INTO)**
+- **UPDATE (SET)**
 
 ``` SQL
 CANCELLAZIONE:
 DELETE FROM STUDENTE WHERE MATR = '678678'
 
 INSERIMENTO:
-INSERT INTO STUDENTE VALUES
-	('456878', 'GIORGIO ROSSI', 'BOLOGNA', 'LOGISTICA E PRODUZIONE')
+INSERT INTO STUDENTE 
+VALUES
+('456878', 'GIORGIO ROSSI', 'BOLOGNA', 'LOGISTICA E PRODUZIONE')
 
 INSERT INTO BOLOGNESI
 (
@@ -122,10 +128,10 @@ INSERT INTO BOLOGNESI
 
 MODIFICA:
 UPDATE ESAME
-	SET VOTO = 30
-		WHERE DATA = 2014-04-01
+SET VOTO = 30
+WHERE DATA = 2014-04-01
 
 UPDATE ESAME
-	SET VOTO = VOTO+1
-		WHERE MATR = '787989'
+SET VOTO = VOTO+1
+WHERE MATR = '787989'
 ```
