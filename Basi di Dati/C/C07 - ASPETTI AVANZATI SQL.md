@@ -24,4 +24,28 @@ WHERE NOT EXISTS
 ```
 
 **CREAZIONE DI INDICI**
-- Meccanismi di accesso efficiente ai dati. Concetto approfondito nella parte E del corso.
+- Meccanismi di accesso efficiente ai dati. Concetto approfondito nella parte di progettazione fisica del corso.
+
+``` SQL
+CREATE INDEX
+CREATE INDEX DATA-IX
+ON ORDINI (DATA)
+
+CREATE UNIQUE INDEX
+CREATE UNIQUE INDEX ORD-KEY
+ON ORDINI (ORD-COD)
+```
+
+**COMANDI DI MODIFICA DEGLI SCHEMI**
+- **CREATE:** Crea nuovi oggetti.
+- **ALTER**: Modifica oggetti pre-esistenti.
+- **DROP**: Cancella oggetti. Possiamo usare le opzioni **RESTRICT** che impedisce drop se gli oggetti comprendono istanze e **CASCADE** che applica drop agli oggetti applicati.
+
+``` SQL
+DROP TABLE ORDINI
+DROP INDEX DATA-IX
+
+ALTER TABLE ORDINI ADD COLUMN NUM-FATT CHAR(6)
+ALTER TABLE ORDINI ALTER COLUM IMPORTO ADD DEFAULT 0
+ALTER TABLE ORDINI DROP COLUMN DATA
+```
