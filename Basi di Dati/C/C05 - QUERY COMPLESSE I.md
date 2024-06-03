@@ -1,7 +1,8 @@
 **QUERY CON ORDINAMENTO**
 - **ORDER**: Essenziale per poter risolvere le query con ordinamento.
-- **QUERY1**: Ordina la data degli ordini con importo inferiore a 100.000EUR.
-- **QUERY2**: Ordina la data in ordine decrescente e i codici clienti in ordine crescente degli ordini incon importo inferiore a 100.000EUR.
+
+**QUERY1**: Ordina la data degli ordini con importo inferiore a 100.000EUR.
+**QUERY2**: Ordina la data in ordine decrescente e i codici clienti in ordine crescente degli ordini incon importo inferiore a 100.000EUR.
 
 ``` SQL
 QUERY1
@@ -23,8 +24,8 @@ ORDER BY COD-ORD ASC, DATA DESC
 - **MAX**: Massimo.
 - **COUNT**: Cardinalità.
 
-- **QUERY 1**: Valore massimo di un ordine.
-- **QUERY 2**: Somma degli importi degli ordini del cliente 1.
+**QUERY 1**: Valore massimo di un ordine.
+**QUERY 2**: Somma degli importi degli ordini del cliente 1.
 
 ``` SQL
 QUERY1
@@ -45,9 +46,9 @@ Usando GROUP BY il risultato della SELECT è un unico record per ciascun gruppo.
 - Funzioni aggregate.
 - Possiamo ordinare il risultato delle query con raggruppamento.
 
-- **QUERY 1:** Selezionare la somma degli importi degli ordini successivi al 10-6-14 per quei clienti che hanno emesso almeno 2 ordini.
-- **QUERY 2**: Selezionare la somma delle quantità dei dettagli degli ordini emessi da ciascun cliente per ciascun prodotto, purchè la somma superi 50.
-- **QUERY 3**: Selezionare la somma degli importi degli ordini successivi al 10-6-14 per quei clienti che hanno emesso almeno 2 ordini dopo quella data, in ordine di cliente.
+**QUERY 1:** Selezionare la somma degli importi degli ordini successivi al 10-6-14 per quei clienti che hanno emesso almeno 2 ordini.
+**QUERY 2**: Selezionare la somma delle quantità dei dettagli degli ordini emessi da ciascun cliente per ciascun prodotto, purchè la somma superi 50.
+**QUERY 3**: Selezionare la somma degli importi degli ordini successivi al 10-6-14 per quei clienti che hanno emesso almeno 2 ordini dopo quella data, in ordine di cliente.
 
 ``` SQL
 QUERY1
