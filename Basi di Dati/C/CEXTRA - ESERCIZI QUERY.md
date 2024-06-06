@@ -1,3 +1,4 @@
+**ALGEBRA RELAZIONALE**
 Quali studenti (nome) sono iscritti al diploma di Informatica?
 PROJECT [NOME]
 	SELECT [C-DIP='INF'] STUDENTE
@@ -103,4 +104,7 @@ PROJECT [NTESS, CODCD]
 /
 PROJECT [CODCD]
 	SELECT [AUTORE='DEPECHE MODE] CD
+
+**SQL**
+
 

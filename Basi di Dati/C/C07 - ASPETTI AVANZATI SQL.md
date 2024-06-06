@@ -37,15 +37,40 @@ ON ORDINI (ORD-COD)
 ```
 
 **COMANDI DI MODIFICA DEGLI SCHEMI**
-- **CREATE:** Crea nuovi oggetti.
-- **ALTER**: Modifica oggetti pre-esistenti.
-- **DROP**: Cancella oggetti. Possiamo usare le opzioni **RESTRICT** che impedisce drop se gli oggetti comprendono istanze e **CASCADE** che applica drop agli oggetti applicati.
+- **CREATE:** Crea oggetti.
+- **ALTER**: Modifica oggetti.
+- **DROP**: Elimina oggetti.
+- Per il DROP Possiamo usare le opzioni **RESTRICT** che impedisce DROP se gli oggetti comprendono istanze e **CASCADE** che applica drop agli oggetti applicati.
 
 ``` SQL
+DROP:
 DROP TABLE ORDINI
 DROP INDEX DATA-IX
 
 ALTER TABLE ORDINI ADD COLUMN NUM-FATT CHAR(6)
 ALTER TABLE ORDINI ALTER COLUM IMPORTO ADD DEFAULT 0
 ALTER TABLE ORDINI DROP COLUMN DATA
+```
+
+**VISTE RELAZIONALI**
+Offrono la visione di tabelle virtuali (schemi esterni). Sono classificate in:
+- **SEMPLICI** (selezione e proiezione su una sola tabella)
+- **COMPLESSE**
+
+Le query possono includere al loro interno viste già create in precedenza, inoltre una volta creata una view possiamo anche interrogarla e nella maggior parte dei casi modificarla.
+
+**VIEW1**: La vista restituirà tutti gli ordini con importo superiore a 10.000. Si chiamerà "ordini-principali"
+**VIEW2**: Vista complessa.
+
+``` SQL
+VIEW1:
+CREATE VIEW ORDINI-PRINCIPALI AS
+SELECT * FROM ORDINI
+WHERE IMPORTO > 10.000
+
+VIEW2:
+CREATE VIEW CLI-PRO (CLIENTE, PRODOTTO) AS
+SELECT COD-CLI, COD-PROD
+FROM ORDINE JOIN DETTAGLIO
+	ON ORDINE.COD-ORD = DETTAGLIO.COD-ORD
 ```
