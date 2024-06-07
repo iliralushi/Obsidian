@@ -23,7 +23,7 @@ Un albero binario è un albero che può avere 0, 1 o 2 figli. Il figlio sinistro
 - Un albero può essere entrambi.
 
 **TEOREMA**
-- **ENUNCIATO**: Un albero completo e perfettamente bilanciato di altezza maggiore-uguale di zero ha esattamente `n = 2^h+1 - 1 nodi con 2^h foglie.`
+- **ENUNCIATO**: Un albero completo e perfettamente bilanciato di altezza `>=0` di zero ha esattamente `n = 2^h+1 - 1 nodi con 2^h foglie.`
 
 Dimostriamo che un albero completo e perfettamente bilanciato ha `2^h` foglie tramite il principio di induzione.
 - **CASO BASE**: Un albero ha altezza h = 0, quindi ha 1 nodo.
@@ -59,6 +59,7 @@ ContaNodi(T)
 	if (t.left = t.right = NIL) then
 		return 1
 	else
+		n_s = 0, n_d = 0
 		if (t.left = NOT NIL) then
 			n_s = ContaNodi(t.left)
 		if (t.right = NOT NIL) then
@@ -67,6 +68,7 @@ ContaNodi(T)
 }
 
 // Calcolare l'altezza di un albero
+
 Altezza(T)
 if (T = NIL) then
 	return -1
@@ -74,4 +76,59 @@ if (t.left = NIL AND t.right = NIL) then
 	return 0
 else
 	return 1 + max{Altezza(t.left), Altezza(t.right)}
+
+// Versione alternativa dove il caso base è la foglia
+
+Altezza(T)
+{
+	if (t.left = t.right = NIL) then
+		return 0
+	else
+		n_s = 0, n_d = 0
+	if (t.left = NOT NIL) then
+		h_s = Altezza(t.left)
+	if (t.right = NOT NIL) then
+		h_d = Altezza(t.right)
+	return 1 + max(h_s, h_d)
+}
+```
+
+**DFS E BFS ALBERI**
+- **PRE-ORDER**: Prima visito la radice, poi il sottoalbero sinistro e infine il sottoalbero destro.
+- **IN-ORDER**: Prima visito il sottoalbero sinistro, poi la radice e infine il sottoalbero destro.
+- **POST-ORDER**: Prima visito il sottoalbero sinistro, poi il sottoalbero destro e infine la radice.
+
+``` C++
+// Pre-order
+DFS1(T)
+{
+	if (T = NOT NIL) then
+	{
+		print t.val
+		DFS1(t.left)
+		DFS1(t.right)
+	}
+}
+
+// In-order
+DFS2(T)
+{
+	if (T = NOT NIL) then
+	{
+		DFS2(t.left)
+		print t.val
+		DFS2(t.right)
+	}
+}
+
+// Post-order
+DFS3(T)
+{
+	if (T = NOT NIL) then
+	{
+		DFS3(t.left)
+		DFS3(t.right)
+		print t.val
+	}
+}
 ```
