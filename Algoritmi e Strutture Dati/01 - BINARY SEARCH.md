@@ -1,4 +1,3 @@
-**INPUT/OUTPUT DEL PROBLEMA**
 - **INPUT**: Una sequenza ordinata di N elementi memorizzata in un array L, un elemento key dello stesso tipo degli elementi in L.
 - **OUTPUT**: **Posizione** di key in L se key sta in L, altrimenti -1.
 
@@ -13,7 +12,7 @@ Un ciclo che controlla tutti gli elementi dell'array. Confrontiamo ogni elemento
 
 **TROVARE INDICE K**
 L'array va da una posizione i ad una posizione j. Per trovare k facciamo:
-- `k = parte bassa di (i+j)/2.`
+- `k = parte bassa di ⌊(i+j)/2⌋.`
 - **ES**: Con `i = 0 e j = 9` abbiamo 4.5. Dato che prendiamo la parte bassa il nostro indice vale 4.
 
 **BINARY SEARCH ITERATIVA**
@@ -27,7 +26,7 @@ BinarySearch(L, n, key)
 
 	while (i < j) // O(log(n))
 	{
-		k = i+j/2
+		k = ⌊i+j/2⌋
 		if (L[k] == key)
 			return k
 		if (L[k] > key)
@@ -55,7 +54,7 @@ BinarySearch(L, i, j, key)
 		then
 			return -1
 	else 
-		k = (i+j)/2
+		k = ⌊(i+j)/2⌋
 		if (L[k] == key)
 			return k
 		if (L[k] > key)

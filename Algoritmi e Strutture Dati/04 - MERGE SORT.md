@@ -14,7 +14,7 @@ MergeSort(A, i, j)
 	if (i < j) // Finchè abbiamo elementi divisibili allora:
 		then
 		{
-			k = i+j/2
+			k = ⌊i+j/2⌋
 			MergeSort(A, i, k) // Divisione della prima sottometà
 			MergeSort(A, k+1, j) // Divisione della seconda sottometà
 			Merge(A, i, k, j) // Fondere le metà ordinate in una

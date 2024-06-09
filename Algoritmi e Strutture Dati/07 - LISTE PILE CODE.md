@@ -6,50 +6,54 @@
 Gli elementi che compongono la lista si dicono nodi. I nodi sono composti da due campi:
 - **VAL**: Contiene il valore del nodo. E.val è il dato associato a tale nodo.
 - **NEXT**: Contiene il puntatore al prossimo nodo se c'è in lista. E.next è il puntatore al prossimo nodo.
-- **L / LISTA**: Puntatore al primo nodo.
+- **L**: Puntatore al primo nodo.
 
 **PRIMITIVE DELLA LISTA**
-1) Crea una nuova lista: new_list()
-2) Test lista vuota: is_empty_list(L)
-3) Inserimento di un nodo in testa: insert_head(L, e)
-4) Inserimento di un nodo dopo un nodo: insert_next(p, e)
-5) Ricerca del nodo in posizione i: search(L, i)
-6) Inserimento di un nodo in posizione i: insert_pos(L, e, i)
-7) Cancellazione di un nodo dato: delete(L, p)
+1) **new_list()** - Crea una nuova lista.
+2) **is_empty_list(L)** - Test lista vuota.
+3) **insert_head(L, e)** - Inserimento di un nodo in testa.
+4) **insert_next(p, e)** - Inserimento di un nodo dopo un nodo.
+5) **search(L, i)** - Ricerca del nodo in posizione i.
+6) **insert_pos(L, e, i)** - Inserimento di un nodo in posizione i.
+7) **delete(L, p)** - Cancellazione di un nodo dato.
 
 ``` C++
 // Restituisce il puntatore ad una lista vuota
-// O(1)
+
 new_list()
 {
 	return NIL
+	// O(1)
 }
 
 // Restituisce vero se la lista vuota, falso altrimenti
-// O(1)
+
 is_empty_list(L)
 {
 	return L = NIL
+	// O(1)
 }
 
 // Inserimento di un nodo in testa
-// O(1)
+
 insert_head(L, e)
 {
 	e.next = L
 	L = e
+	// O(1)
 }
 
 // Inserimento di un nodo dopo un nodo dato
-// O(1)
+
 insert_next(p, e)
 {
 	e.next = p.next
 	p.next = e
+	// O(1)
 }
 
 // Ricerca nodo in posizione i, restituisce il puntatore del nodo/NIL
-// O(i)
+
 search(L, i)
 {
 	j = 0
@@ -62,10 +66,11 @@ search(L, i)
 	}
 
 	return p
+	// O(i)
 }
 
 // Inserimento di un nodo in posizione data i
-// O(i)
+
 insert_pos(L, e, i)
 {
 	if (i = 0)
@@ -78,10 +83,11 @@ insert_pos(L, e, i)
 			then
 				insert_next(p, e)
 	}
+	// O(i)
 }
 
 // Cancellazione di un nodo dato
-// O(n)
+
 delete(L, p)
 {
 	if (p = L)
@@ -96,6 +102,7 @@ delete(L, p)
 			then
 				tmp.next = p.next
 	}
+	// O(n)
 }
 ```
 
@@ -103,32 +110,34 @@ delete(L, p)
 Implementa la strategia LIFO (Last-in First-Out). Viene realizzata tramite lista.
 - I valori memorizzati nella pila sono tutti dello stesso tipo.
 - Nuovi valori vengono aggiunti in testa.
-- Un estrazione restituisce il valore dell'ultimo elemento aggiunto (valore in testa)
+- Un estrazione restituisce il valore dell'ultimo elemento aggiunto (valore in testa).
 
 **PRIMITIVE STACK**
-1) Crea una nuova pila: new_stack()
-2) Verifica se la pila è vuota. is_empty_stack(S)
-3) Inserimento di un valore in testa: push(S, x)
-4) Restituisce il valore in testa: top(S)
-5) Restituisce il valore in testa e lo rimuove dalla pila: pop(S)
+1) **new_stack()** - Crea una nuova pila.
+2) **is_empty_stack(S)** - Verifica se la pila è vuota.
+3) **push(S, x)** - Inserimento di un valore in testa.
+4) **top(S)** - Restituisce il valore in testa.
+5) **pop(S)** - Restituisce il valore in testa e lo rimuove dalla pila.
 
 ``` C++
 // Restituisce il puntatore ad uno stack vuoto
-// O(1)
+
 new_stack()
 {
 	return NIL
+	// O(1)
 }
 
 // Restituisce vero se la pila è vuota, falso altrimenti
-// O(1)
+
 is_empty_stack(S)
 {
 	return S = NIL
+	// O(1)
 }
 
 // Inserisce un elemento in testa alla pila
-// O(1)
+
 push(S, x)
 {
 	if NOT (S = NIL) then
@@ -140,20 +149,22 @@ push(S, x)
 	}
 	else
 		return error
+	// O(1)
 }
 
 // Restituisce il valore dell'elemento in testa
-// O(1)
+
 top(S)
 {
 	if NOT (S = NIL) then
 		return S.val
 	else
 		return error
+	// O(1)
 }
 
 // Restituisce il valore dell'elemento in testa e lo toglie dalla pila
-// O(1)
+
 pop(S)
 {
 	if NOT (S = NIL) then
@@ -164,6 +175,7 @@ pop(S)
 	}
 	else
 		return error
+	// O(1)
 }
 ```
 
@@ -176,33 +188,35 @@ Implementa la strategia FIFO (First-in First-Out). Viene realizzata tramite list
 La queue è un puntatore ad un nodo che contiene due puntatori; tail che punta all'ultimo nodo della lista, head che punta al primo nodo di una lista.
 
 **PRIMITIVE CODA**
-1) Crea una nuova coda: new_queue()
-2) Restituisce vero se la coda è vuota: is_empty_queue(Q)
-3) Aggiunge un elemento in fondo alla coda: enqueue(Q, x)
-4) Restituisce il valore in testa alla coda: first(Q)
-5) Restituisce il valore in testa alla coda e lo rimuove: dequeue(Q)
+1) **new_queue()** - Crea una nuova coda.
+2) **is_empty_queue(Q)** - Restituisce vero se la coda è vuota.
+3) **enqueue(Q, x)** - Aggiunge un elemento in fondo alla coda.
+4) **first(Q)** - Restituisce il valore in testa alla coda.
+5) **dequeue(Q)** - Restituisce il valore in testa alla coda e lo rimuove.
 
 Il nodo della queue contiene due puntatori; head che punta al primo nodo di una lista che memorizza i valori nella coda, tail che punta all'ultimo nodo della lista.
 
 ``` C++
 // Crea una coda nuova
-// O(1)
+
 new_queue()
 {
 	Q = new_queue_node()
 	Q.head = NIL
 	Q.next = NIL
+	// O(1)
 }
 
 // Restituisce una coda vuota
-// O(1)
+
 is_empty_queue(Q)
 {
 	return Q.head = NIL
+	// O(1)
 }
 
 // Inserimento di un valore in fondo alla coda
-// O(1)
+
 enqueue(Q, x)
 {
 	e = new_list_node()
@@ -214,20 +228,22 @@ enqueue(Q, x)
 	else
 		Q.tail.next = e
 	Q.tail = e
+	// O(1)
 }
 
 // Restituisce il valore in testa alla coda
-// O(1)
+
 first(Q)
 {
 	if (Q.head != NIL)
 		return Q.head.val
 	else
 		return error
+	// O(1)
 }
 
 // Restituisce il valore in testa alla coda e lo elimina
-// O(1)
+
 dequeue(Q)
 {
 	if NOT (is_empty_queue(Q)) then
@@ -238,5 +254,6 @@ dequeue(Q)
 		return x
 	else
 		return error
+	// O(1)
 }
 ```

@@ -1,4 +1,3 @@
-**INPUT/OUTPUT DEI SORT**
 - **INPUT**: Una sequenza di valori memorizzati in un array dello stesso tipo, quindi che possono essere ordinati.
 - **OUTPUT**: La sequenza A ordinata in modo non decrescente.
 
