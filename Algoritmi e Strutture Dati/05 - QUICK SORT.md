@@ -18,8 +18,6 @@ QuickSort(A, p, r)
 			QUICKSORT(A, q+1, r) // Chiamata ricorsiva su seconda sequenza
 		}
 }
-
-// CHIAMATA PRINCIPALE: QuickSort(A, 0, n-1)
 ```
 
 **PARTITION**
@@ -60,6 +58,6 @@ PARTITION(A, p, r)
 **COSTO COMPUTAZIONALE**
 Abbiamo due casi:
 - **PARTIZIONE BILANCIATA**: `q = n-q-1.` A quel punto basta fare il Master Theorem, analogo a quello del Merge Sort con `a = 2, b = 2, d = 1.`
-- **PARTIZIONE SBILANCIATA**: `q = 0 e n-q-1 = n-1.` In questo caso dato che partition costa N e abbiamo che dobbiamo eseguire il Quick Sort per ogni elemento allora il costo sarà `O(n^2).`
+- **PARTIZIONE SBILANCIATA**: `q = 0 e n-q-1 = n-1.` In questo caso dato che partition costa N e abbiamo che dobbiamo eseguire il Quick Sort per ogni elemento. Il costo sarà `O(n^2).`
 
 Il Quick Sort usa meno spazio rispetto al Merge Sort dato che non deve creare un array di supporto. Per poter avvicinarci al caso migliore randomizziamo il pivot.

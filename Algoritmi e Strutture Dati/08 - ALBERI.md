@@ -88,7 +88,7 @@ Altezza(T)
 // Radice come caso base. Dobbiamo salvare come prima le chiamate
 // su una variabile altrimenti andrebbero perse.
 
-Altezza(T)
+Altezza(T, h)
 {
 	if (t.left = t.right = NIL) then
 		return 0

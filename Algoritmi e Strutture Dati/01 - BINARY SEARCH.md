@@ -22,9 +22,9 @@ Nel caso peggiore, ovvero quando l'elemento non è presente nell'array si ha che
 BinarySearch(L, n, key)
 {
 	i = 0             
-	j = n-1 // O(1)
+	j = n-1
 
-	while (i < j) // O(log(n))
+	while (i < j)
 	{
 		k = ⌊i+j/2⌋
 		if (L[k] == key)
@@ -35,7 +35,7 @@ BinarySearch(L, n, key)
 			i = k+1
 	}
 
-	return -1 // O(1)
+	return -1
 }
 ```
 
@@ -63,6 +63,4 @@ BinarySearch(L, i, j, key)
 			else
 				return BinarySearch(L, k+1, j, key)
 }
-
-// CHIAMATA PRINCIPALE: BinarySearch(L, 0, n-1, key)
 ```

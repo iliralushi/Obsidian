@@ -20,8 +20,6 @@ MergeSort(A, i, j)
 			Merge(A, i, k, j) // Fondere le metà ordinate in una
 		}
 }
-
-// CHIAMATA PRINCIPALE: MergeSort(A, 0, n-1)
 ```
 
 **MERGE**
