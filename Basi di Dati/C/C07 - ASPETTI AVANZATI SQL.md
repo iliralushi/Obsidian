@@ -75,33 +75,21 @@ FROM ORDINE JOIN DETTAGLIO
 	ON ORDINE.COD-ORD = DETTAGLIO.COD-ORD
 ```
 
+
 ``` SQL
-employees (employee_id, name, department_id, salary) 
-departments (department_id, department_name) 
-projects (project_id, project_name, department_id) employee_projects (employee_id, project_id) 
-salaries (employee_id, salary, effective_date)
+CLIENTE (CODCL,NOME,ETA)
+PC (CODP,TIPO,PREZZO)
+ORDINE (DATA,CODCL,CODP,QTY)
+	FK: CODCL REFERENCES CLIENTE
+	FK: CODP REFERENCES PC
 
-SELECT E1.NAME
-FROM EMPLOYEES E1
-WHERE SALARY > 
-	(
-		SELECT 
-	)
-
-Trova gli impiegati che non hanno alcun progetto su cui non stanno lavorando.
-
-SELECT *
-FROM EMPLOYEES E1
-WHERE NOT EXISTS
-	(
-		SELECT *
-		FROM PROJECTS P1
-		WHERE NOT EXISTS
-	)
-		(
-			SELECT *
-			FROM EMPLOYEE_PROJECTS EP1
-			WHERE E1.EMPLOYEE_ID = EP1.EMPLOYEE_ID AND
-			P1.PROJECT_ID = EP1.PROJECT_ID
-		)
+SELECT NOME, ETA
+FROM CLIENTE
+WHERE CODCL NOT IN
+(
+	SELECT CODCL
+	FROM PC P, ORDINE O
+	WHERE P.CODP = O.CODP
+	AND PREZZO > 500
+)
 ```

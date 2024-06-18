@@ -9,26 +9,31 @@ Si eliminano i duplicati. Questi comandi sono equivalenti all'algebra relazional
 **QUERY 3**: Selezionare i codici degli ordini i cui importi superano 500 euro e che sono presenti in qualche dettaglio con quantità superiore a 1000.
 
 ``` SQL
-QUERY1
-SELECT COD-ORD FROM ORDINE
+QUERY1:
+SELECT COD-ORD
+FROM ORDINE
 WHERE IMPORTO > 500
 UNION
-SELECT COD-ORD FROM DETTAGLIO
+SELECT COD-ORD
+FROM DETTAGLIO
 WHERE QTA > 1000
 
-QUERY2
-SELECT COD-ORD FROM ORDINE
+QUERY2:
+SELECT COD-ORD
+FROM ORDINE
 WHERE IMPORTO > 500
 EXCEPT
-SELECT COD-ORD FROM DETTAGLIO
+SELECT COD-ORD
+FROM DETTAGLIO
 WHERE QTA > 1000
 
-QUERY3
-SELECT COD-ORD FROM ORDINE
+QUERY3:
+SELECT COD-ORD
+FROM ORDINE
 WHERE IMPORTO > 500
 INTERSECT
-SELECT COD-ORD FROM DETTAGLIO
-WHERE QTA > 1000
+SELECT COD-ORD
+FROM DETTAGLIO
 ```
 
 **COMANDI QUERY ANNIDATE**
@@ -47,82 +52,74 @@ Sono costruite concatenando due query SQL nel predicato WHERE:
 **QUERY 4**: Aumentare di 5 euro l'importo di tutti gli ordini che comprendono il prodotto 456.
 
 ``` SQL
-QUERY1
+QUERY1:
 SELECT NOME, INDIRIZZO
 FROM CLIENTE
 WHERE COD-CLI IN
-	(
-		SELECT COD-CLI
-		FROM ORDINE
-		WHERE IMPORTO > 10.000
-	)
-	
-QUERY2
+(
+	SELECT COD-CLI
+	FROM ORDINE
+	WHERE IMPORTO > 10.000
+)
+
+QUERY2:
 SELECT NOME, INDIRIZZO
 FROM CLIENTE
 WHERE COD-CLI NOT IN
-	(
-		SELECT COD-CLI
-		FROM ORDINE
-		WHERE IMPORTO > 10.000
-	)
+(
+	SELECT COD-CLI
+	FROM ORDINE
+	WHERE IMPORTO > 10.000
+)
 
-QUERY3
+QUERY3:
 SELECT NOME, INDIRIZZO
-FROM CLIENTI
+FROM CLIENTE
 WHERE COD-CLI IN
-	(
-		SELECT COD-CLI 
-		FROM ORDINE
-		WHERE COD-ORD IN
-		(
-			SELECT COD-ORD 
-			FROM DETTAGLIO
-			WHERE COD-PROD IN
-			(
-				SELECT COD-PROD
-				FROM PRODOTTO
-				WHERE NOME= 'Pneumatico'
-			)
-		)
-	)
+(
+	SELECT COD-CLI
+	FROM ORDINE O, DETTAGLO D, PRODOTTO P
+	WHERE O.COD-ORD = D.COD-ORD
+	AND D.COD-PROD = P.COD-PROD
+	AND P.NOME = 'PNEUMATICO'
+)
 
-QUERY4
+QUERY4:
 UPDATE ORDINE
 SET IMPORTO = IMPORTO + 5
 WHERE COD-ORD IN
-	(
-		SELECT COD-ORD
-		FROM DETTAGLIO
-		WHERE COD-PROD = '456'
-	)
+(
+	SELECT COD-ORD
+	FROM ORDINE
+	WHERE COD-PROD = 456
+)
 ```
 
 **QUERY CON ANY E ALL**
 - Il predicato ANY ha valore true se e solo se almeno uno dei valori restituiti da subquery **SODDISFA LA CONDIZIONE IN CUI COMPARE**.
 - Il predicato ALL è analogo ad ANY con l'eccezione che deve essere vera per **TUTTI I VALORI**.
 
-**QUERY 1**: Trova i codici clienti di tutte le persone tranne quella che ha fatto l'acquisto con importo minore.
-**QUERY 2**: Trova il codice del cliente che ha fatto l'ordine con l'importo più grande.
+**QUERY 1**: Trova il codice dell'ordine con importi maggiori dell'importo più piccolo inserito nella tabella.
+**QUERY 2**: Trova il codice dell'ordine con l'importo più grande.
 
 ``` SQL
-QUERY1
+QUERY1:
 SELECT COD-ORD
 FROM ORDINE
 WHERE IMPORTO > ANY
-	(
-		SELECT IMPORTO
-		FROM ORDINE
-	)
+(
+	SELECT IMPORTO
+	FROM ORDINE
+)
 
-QUERY2
+QUERY2:
 SELECT COD-ORD
 FROM ORDINE
 WHERE IMPORTO >= ALL
-	(
-		SELECT IMPORTO
-		FROM ORDINE
-	)
+(
+	SELECT IMPORTO
+	FROM ORDINE
+)
 ```
 
 **QUERY CON EXISTS**
@@ -134,44 +131,72 @@ Dobbiamo avere un legame tra sottoquery e query di sopra attraverso un join.
 **QUERY 2**: Selezionare i codici degli ordini i cui importi superano 500 euro ma non presenti in qualche dettaglio con quantità superiore a 1000.
 
 ``` SQL
-QUERY1
+QUERY1:
 SELECT NOME, INDIRIZZO
 FROM CLIENTE C
 WHERE EXISTS
-	(
-		SELECT *
-		FROM ORDINE O
-		WHERE O.CODCL = C.CODCL AND
-		IMPORTO > 10.000
-	)
+(
+	SELECT *
+	FROM ORDINE O
+	WHERE C.CODCLI = O.CODCLI
+	AND IMPORTO > 10.000
+)
 
-QUERY2
-SELECT NOME, INDIRIZZO
-FROM CLIENTE C
-WHERE NOT EXISTS
-	(
-		SELECT *
-		FROM ORDINE O
-		WHERE O.CODCL = C.CODCL AND
-		IMPORTO > 10.000
-	)
+QUERY2:
+SELECT COD-ORD
+FROM ORDINE O
+WHERE IMPORTO > 500
+AND NOT EXISTS
+(
+	SELECT *
+	FROM DETTAGLIO D
+	WHERE O.COD-ORD = D.COD-ORD
+	AND D.QTY > 1000
+)
 ```
 
 **NESTED QUERY CON OPERATORI DI CONFRONTO**
 Possiamo fare query annidate con operatori di confronto a patto che la subquery restituisca solo una singola tupla.
 
 **QUERY 1**: Selezionare il nome degli impiegati il cui il salario è maggiore di quello del proprio manager.
+**QUERY 2**: In quali tipi di progetto lavora Giovanni?
+**QUERY 3**: Chi è il manager di Piero?
 
 ``` SQL
-QUERY1
+QUERY1:
 SELECT NOME
-FROM IMPIEGATI AS X
+FROM IMPIEGATI
 WHERE SALARIO >
+(
+	SELECT SALARIO
+	FROM IMPIEGATI Y
+	WHERE MATR = Y.MATR-MGR
+)
+
+QUERY2:
+SELECT TIPO
+FROM PROGETTO
+WHERE NUM-PROG IN
+(
+	SELECT NUM-PROG
+	FROM ASSEGNAMENTO
+	WHERE MATR IN
 	(
-		SELECT SALARIO
-		FROM IMPIEGATI
-		WHERE MATR = X.MATR-MGR
+		SELECT MATR
+		FROM IMPIEGATO
+		WHERE NOME = 'GIOVANNI'
 	)
+)
+
+QUERY3:
+SELECT NOME
+FROM IMPIEGATO
+WHERE MATR IN
+(
+	SELECT MATR-MGR
+	FROM IMPIEGATO 
+	WHERE NOME = 'PIERO'
+)
 ```
 
 **RIDUZIONI DI QUERY ANNIDATE**
@@ -180,3 +205,4 @@ Le query annidate formulate con i seguenti operatori si possono ridurre a query 
 
 Le query annidate formulate con i seguenti operatori **NON** si possono ridurre a query semplici.
 - **NOT IN, ALL, NOT EXISTS**.
+

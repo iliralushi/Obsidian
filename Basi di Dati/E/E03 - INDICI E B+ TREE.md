@@ -1,5 +1,5 @@
 **INDICE**
-**TIPO DI ACCESSO SECONDARIO!**
+TIPO DI ACCESSO SECONDARIO!
 Associa ad un file una tabella nella quale l'entrata i-esima memorizza una coppia del tipo (Ki, Pi).
 - Ki è un valore di chiave.
 - Pi è un riferimento al record della tupla con valore di chiave Ki.
