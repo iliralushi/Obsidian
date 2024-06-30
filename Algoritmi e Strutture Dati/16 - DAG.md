@@ -1,48 +1,40 @@
-**DAG**
-Un DAG è un Grafo Diretto Aciciclo. Chiamiamo sorgente tutti i nodi che non hanno archi entranti, mentre chiamiamo pozzi i nodi che non hanno archi uscenti.
+**DEFINIZIONE**
+Un DAG è un grafo diretto senza cicli, infatti DAG sta per Directed Acyclic Graph. Esso può avere uno o più nodi detti sorgente che avranno solo archi uscenti, mentre ci sarà un pozzo unico che non avrà archi entranti.
 
 **ORDINAMENTO TOPOLOGICO**
-Dato un DAG G = (V, E) un ordinamento topologico è un ordinamento dei suoi nodi tale per cui se (u, v) ∈ E allora u precede sempre v nell'ordinamento.
-- Se un grafo non-DAG ha un arco Back allora è impossibile trovare un ordinamento topologico dato che ci sarà sempre un arco che torna indietro.
+L'ordinamento topologico in un DAG è tale che per ogni coppia di nodi (u, v) ∈ E allora abbiamo che u precederà sempre v nell'ordinamento.
 
-**LINEARIZZAZIONE DAG**
+**LINEARIZZAZIONE**
+Per linearizzare un DAG, quindi per dargli un ordinamento topologico possiamo procedere in due modi:
 
-**ALGORITMO 1**:
-Questo algoritmo funziona perchè avremo sempre un nodo sorgente, quindi un nodo senza archi entranti. Una volta rimosso la sorgente non abbiamo più degli archi che erano entranti per certi nodi nel nostro DAG, possiamo quindi selezionare questi nodi. Alla fine avremo il pozzo che, una volta rimossi tutti i nodi non avrà archi entranti. L'algoritmo consiste nel:
-
-- Scegliere un nodo senza archi entranti.
-- Metterlo nell'ordinamento.
-- Rimuovere il nodo e i suoi archi dal grafo.
-- Ripetere le istruzione fino a quando non abbiamo più nodi nel grafo.
-
-**ALGORITMO 2**:
-Eseguiamo una DFS sul DAG e inseriamo i nodi nell'ordine inverso rispetto ai post, quindi dal più grande al più piccolo. Funziona perchè con gli archi tree, cross e forward abbiamo sempre che u è prima di v, mentre non abbiamo archi back.
+1) Il primo algoritmo consiste nel trovare un nodo senza archi entranti, aggiungerlo all'ordinamento, rimuoverlo dal DAG assieme a tutti gli archi uscenti e di iterare questi tre passaggi affinchè il DAG sia vuoto. Funziona perchè abbiamo sempre un nodo da cui partire, ovvero le sorgenti, che non hanno archi entranti. Una volta tolta la sorgente non abbiamo più degli archi entranti che puntavano ad altri nodi, quindi avremo altri nodi da poter selezionare. L'ultimo nodo rimasto sarà un pozzo e, siccome è solo non avrà archi entranti.
+   
+2) Il secondo algoritmo consiste nell'applicare una DFS sul DAG e inserire i nodi nell'ordinamento topologico inverso rispetto ai valori di `post[].` Funziona perchè in un DAG non abbiamo archi back, solo tree, forward e cross. Dato che usiamo una pila possiamo procedere usando una DFS post-order e una pila per salvare i valori. Il costo computazionale è di `O(V+E).`
 
 ``` C++
 TopologicalSort(G)
 {
-	visited[1..n] new array
-	S = new_stack()
-
-	for all v ∈ v do
-		visited[v] = FALSE
-	for all v ∈ V do
-		if visited[v] = FALSE
-			then DFS-TS(G, v)
-			
-	return S
+	visited[1..n] new array;
+	S = new_stack();
+	
+	for all (v ∈ V) do
+		visited[v] = false;
+		
+	for all (v ∈ V) do
+		if (visited[v] = false) then
+			DFS-TS(G, v);
+	
+	return S;
 }
 
-DFS-TS(G, u)
+DFS-TS(G, v)
 {
-	visited[v] = TRUE
-
-	for all (v, u) ∈ E do
-		if (visited[u] = FALSE) then
-			DFS-TS(G, u)
-
+	visited[v] = true;
+	
+	for all (v, u ∈ E) do
+		if (visited[u] = false) then
+			DFS-TS(G, u);
+	
 	push(S, v)
 }
-
-// O(V+E)
 ```

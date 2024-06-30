@@ -1,69 +1,64 @@
-**BREADTH FIRST SEARCH GRAFI**
-La BFS per i grafi è un'estensione della BFS per gli Alberi. Partendo da un nodo si visitano prima i vicini, poi i vicini dei vicini fino a terminare i nodi. Visitiamo quindi a livelli.
-- Strategia utilizzata per visitare tutti i nodi raggiungibili **A PARTIRE DA UN NODO SORGENTE**.
+**DEFINIZIONE**
+La BFS sui grafi è un estensione della BFS sugli alberi, quindi si parte dai vicini di un nodo, per andare dai vicini dei vicini fino ad arrivare ad un punto dove non possiamo più procedere. Strategia usata per visitare tutti i nodi raggiungibili da un nodo sorgente.
 
-**CAMMINI MINIMI PARTENDO DA SORGENTE**
-La BFS trova i cammini minimi a partire da un nodo sorgente. La distanza (u,v) è il cammino minimo per passare dal nodo u al nodo v. Per poter risolvere il problema modifichiamo lo pseudocodice:
-- **PREV[]**: Indica il padre del nodo.
-- **DIST[]**: Indica la distanza dalla sorgente al nodo di cui vogliamo trovare il percorso.
+**BFS**
+In questa sezione descrivo due varianti della BFS:
+1) BFS normale che, partendo da un nodo sorgente, visita prima i suoi vicini, poi i vicini dei vicini... fino a finire i cammini disponibili. Sfrutta la coda ed è simile alla BFS degli alberi.
+2) BFS che trova il cammino minimo con arco non pesato a partire da un nodo sorgente. Usiamo un array `prev[]` per trovare il padre del nodo e un array `dist[]` per memorizzare le distanze di ogni singolo percorso, inoltre controlla anche se il nodo è già stato visitato. Verrà quindi scelto il percorso col costo minore.
 
-**CODICE BFS**
+Il costo di entrambe le versioni è di `O(V+E).`
 
 ``` C++
-// BFS normale
-
 BFS(G, s)
 {
-	visited[1..n] new array
-	for all v ∈ V do
-		visited[v] = FALSE
-	visited[s] = TRUE
-
-	Q = new_queue()
-	enqueue(Q, s)
-
-	while NOT is_empty_queue(Q) do
+	visited[1..n] new array;
+	for all (v ∈ V) do
+		visited[v] = false;
+	
+	visited[s] = true;
+	Q = new_queue();
+	enqueue(Q, s);
+	
+	while NOT (is_empty_queue(Q)) do
 	{
-		u = dequeue(Q)
-		// Esame di u
-		for all (u, v) ∈ E do
-			if visited[v] = FALSE then
+		u = dequeue(Q);
+		// esame del nodo estratto
+		
+		for all ((u, v) ∈ E) do
+			if (visited[v] = false) then
 			{
-				enqueue(Q, v)
-				visited[u] = TRUE
+				enqueue(Q, v);
+				visited[u] = true;
 			}
+	}
 }
 
-// BFS per cammini minimi
-
 BFS(G, s)
 {
-	dist[1..n] new array
-	prev[1..n] new array
+	prev[1..n] new array;
+	dist[1..n] new array;
 	
-	for v ∈ V do
+	for all (v ∈ V) do
 	{
-		dist[v] = +∞
-		prev[v] = 0
+		prev[v] = 0;
+		dist[v] = +∞;
 	}
-
-	dist[s] = 0
-	Q = new_queue()
-	enqueue(Q, s)
-
-	while NOT is_empty_queue(Q) do
+	
+	Q = new_queue(Q);
+	enqueue(Q, s);
+	
+	while NOT (is_empty_queue(Q)) do
 	{
-		u = dequeue(Q)
-		// Esame di u
-		for all (u, v) ∈ E do
+		u = dequeue(Q);
+		// esame del nodo estratto
+		
+		for all ((u, v) ∈ E) do
 			if (dist[v] = +∞) then
 			{
-				enqueue(Q, s)
-				dist[v] = dist[u] + 1
-				prev[v] = u
+				enqueue(Q, v);
+				dist[v] = dist[u] + 1;
+				prev[v] = u;
 			}
 	}
 }
-
-// O(V+E)
 ```

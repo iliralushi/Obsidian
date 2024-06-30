@@ -1,17 +1,14 @@
-**TIPI DI PROBLEMI**
-- **PROBLEMI DECISIONALI**: Sono i problemi che come risposta hanno un valore booleano, quindi vero o falso.
-- **PROBLEMI DI RICERCA**: Sono i problemi che come soluzione devono trovare un certo valore sotto determinate specifiche.
-- **PROBLEMI DI OTTIMIZZAZIONE**: Ad ogni soluzione ammissibile è assegnato un costo e noi dobbiamo trovare la soluzione ottima, ovvero una soluzione ammissibile di costo minimo o massimo.
+**CLASSIFICAZIONE DI PROBLEMI**
+1) **PROBLEMI DECISIONALI**: La risposta al problema è un semplice SI/NO oppure un Vero/Falso. Determiniamo il valore grazie al nostro input che, a seconda delle nostre condizioni ritornerà un valore booleano.
+2) **PROBLEMI DI RICERCA**: Tra tutte le soluzioni possibili se ne cerca una, detta soluzione ammissibile che soddisfa una certa condizione.
+3) **PROBLEMI DI OTTIMIZZAZIONE**: Ad ogni soluzione ammissibile è associato un costo e cerchiamo tra tutte le soluzioni quella ottima, che sarà una soluzione ammissibile col costo minimo o massimo.
 
-**ESEMPIO PROBLEMA DI OTTIMIZZAZIONE**
-- **INPUT**: Grafo indiretto connesso, un nodo sorgente e una funzione peso sugli archi.
-- **OUTPUT**: Cammini minimi dalla sorgente ad ogni nodo.
-- **SOLUZIONE AMMISSIBILE**: Un ciclo che va dal primo a V-1 nodi, ognuno dei quali è un cammino di un nodo del grafo che passa dalla sorgente.
-- **FUNZIONE OBIETTIVO**: Minimo.
-- **SOLUZIONE OTTIMA**: La soluzione detta sopra.
+**ALGORITMI GREEDY**
+Algoritmo che costruisce la soluzione in maniera incrementale, effettuando una serie di scelte in cui, ad ogni passo, si seleziona una parte di soluzione che permette di ottimizzare il costo della soluzione parziale fino a quel momento.
 
-**ALGORITMI GREEDY**:
-Costituisce la soluzione al problema in maniera incrementale, effettua una serie di scelte in cui, ad ogni passo dell'algoritmo selezioniamo una parte di soluzione con costo ottimizzato fino ad arrivare alla soluzione ottima.
+Un algoritmo greedy si può applicare solo se il problema ha una sottostruttura ottima. Se il problema ha una sottostruttura ottima allora contiene all'interno soluzioni ottime per i sottoproblemi.
 
-- **APPROCCIO GENERALE**: Ordina gli oggetti per appetibilità alla soluzione ottima, poi genera la soluzione in maniera incrementale, scegliendo iterativamente l'oggetto più appetibile tra quelli selezionabili (SCELTA GREEDY). Scelte mai modificate, saranno ottimali dal momento della selezione.
-- **SOTTOSTRUTTURA OTTIMA**: Un Algoritmo Greedy per funzionare deve avere una sottostruttura ottima, non sono algoritmi generali.
+**APPROCCIO GENERALE**
+- Ordiniamo gli oggetti per "appetibilità" a far parte della soluzione ottima.
+- Generiamo la soluzione in maniera incrementale, selezionando iterativamente l'oggetto più appetibile non ancora selezionato. Viene detta scelta greedy.
+

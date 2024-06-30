@@ -1,47 +1,51 @@
-**DEFINIZIONE DI GRAFO**
-Un grafo G = (V, E) è una coppia di insiemi dove i V è l'insieme dei vertici mentre E è l'insieme degli archi.
+**DEFINIZIONE**
+Un grafo G = (V, E) è una coppia di insiemi dove:
+- V è un insieme di vertici.
+- E è un insieme di archi.
 
-**TERMINOLOGIA GRAFO**
-- **GRAFO NON ORIENTATO**: Gli archi di G **NON** sono ordinati, quindi **NON** hanno direzione.
-- **GRAFO ORIENTATO**: Gli archi di G **SONO** ordinati, quindi **HANNO** direzione.
-- **NODO ADIACENTE**: Se esiste la coppia (u, v) ∈ E.
-- **SOTTOGRAFO**: Dato che il grafo è una coppia di insiemi esiste il sottografo, che è un grafo G' che contiene alcuni degli elementi contenuti nel grafo G.
-- **CONNESSO**: Un grafo G è connesso quando ogni nodo è connesso da un vertice. Si dice fortemente connesso per i grafi diretti quando esiste un cammino diretto che connette ogni coppia di nodi.
+**TERMINOLOGIA**
 
-**CAMMINO DI UN GRAFO**
-Sequenza di nodi `<v0, v1, v2, v3, ... vK>` tale che `(vI, vI+1) ∈ E` per `i = 0...k-1`
-- **LUNGHEZZA DI UN CAMMINO**: Il numero di archi del grafo.
-- **CAMMINO SEMPLICE**: Cammino che non contiene nodi ripetuti.
-- **CICLO**: Sequenza di nodi che si ripete all'infinito.
+- **GRAFO NON DIRETTO**: Le coppie di E non sono ordinate.
+- **GRAFO DIRETTO**: Le coppie di E seguono un ordine, sono diretti.
+- **NODO ADIACENTE**: Un nodo u si dice adiacente a v se esiste la coppia (u,v) ∈ E.
+- **ARCO ORIENTATO**: Un arco (u, v) è orientato dal nodo u se esiste la coppia ∈ E.
+- **GRADO DEL NODO**: Il numero di archi (u, v) ∈ E a partire da u.
+  
+- **CAMMINO DI UN GRAFO**: Una sequenza di vertici in cui ogni coppia di nodi è collegata attraverso un arco.
+- **LUNGHEZZA CAMMINO**: Il numero di archi impiegati per un cammino.
+- **CAMMINO SEMPLICE**: Cammino che contiene nodi non ripetuti.
+- **CICLO**: Una sequenza di nodi che si ripete all'infinito.
 
-**DIMENSIONI DEL GRAFO**
-Il costo computazionale di un algortimo usato sui grafi è di generalmente `O(|V| + |E|).`
-- n = IVI numero dei nodi.
-- m = IEI numero degli archi.
+- **SOTTOGRAFO**: Un grafo G' = (V', E') si dice sottografo se esso è contenuto in un grafo G.
+- **CONNESSO**: Un grafo G è connesso quando ogni nodo è connesso da un vertice.
+- **FORTEMENTE CONNESSO**: Esiste un cammino diretto che connette ogni coppia di nodi del grafo.
 
-Esistono casi particolari:
-- **GRAFO COMPLETO**: Un grafo è completo quando esiste un arco per ogni coppia di nodi. In questo caso il costo è `O(n^2).`
-- **GRAFO SPARSO**: Ha pochi archi e conviene usare le liste di adiacenza. Il contrario è un grafo denso, per cui conviene usare matrici di adiacenza.
+**COSTO COMPUTAZIONALE DI ALGORITMI**
+Il costo computazionale di algoritmi su grafi è spesso espresso in `O(V + E)` dato che nel caso peggiore dobbiamo visitare ogni nodo, quindi anche ogni arco.
 
-**MATRICI E LISTE DI ADIACENZA**
-Sono dei metodi per rappresentare il contenuto del grafo. Per convenzione i nodi del grafo sono rappresentati dagli indici (1,n).
-- **MATRICI**: La matrice è simmetrica se il grafo non è orientato.
-- **LISTE**: Viene creato un array G di liste. `G[v]` è una lista che contiene i vicini di un nodo.
+**CASI PARTICOLARI**
+- **GRAFO COMPLETO**: Un grafo è completo quando esiste un arco per ogni singola coppia di nodi, in questo caso il costo sarà di `O(n^2).`
+- **GRAFO SPARSO**: Ha pochi archi, conviene usare liste di adiacenza.
+- **GRAFO DENSO**: Ha tanti archi, conviene usare matrici di adiacenza.
+  
+**MATRICI DI ADIACENZA**
+Matrice G che è `n * n`. La casella `G[i, j]` sarà 1 se esiste un arco tra i nodi in posizione `(i,j)` altrimenti sarà zero. La matrice è simmetrica se il grafo è non orientato.
+Occupa `O(n^2)` come spazio.
 
-**RAPPRESENTAZIONE GRAFI**
+**LISTE DI ADIACENZA**
+Array G di `card(V)` liste. `G[v]` è una lista, quindi un puntatore al primo elemento della lista che contiene tutti i vicini di v. Occupa `O(V+E)` come spazio.
+
+**ACCESSO A GRAFI**
+1) Itera su tutti i nodi.
+2) Itera su tutti gli archi.
+3) Itera prima su tutti i nodi, e per ogni nodo accede ai suoi archi.
 
 ``` C++
-// Iterare su tutti i nodi:
-
 for all (v ∈ V) do
 	// Istruzioni
 
-// Iterare su tutti gli archi:
-
 for all (u, v) ∈ E do
 	// Istruzioni
-
-// Iterare su ogni nodo. Per ogni nodo iterare gli archi incidenti:
 
 for all (v ∈ V) do
 	// Istruzioni
