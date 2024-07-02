@@ -1,4 +1,4 @@
-**DEFINIZIONE**
+**DEFINIZIONE**k   
 Dato un insieme di chiavi totalmente ordinabile un Heap Binario è un albero binario che memorizza chiavi nell'insieme e, a seconda dell'ordinamento, si classifica in Min e Max Heap.
 
 **MIN-HEAP BINARIO**

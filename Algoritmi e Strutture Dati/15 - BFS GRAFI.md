@@ -44,6 +44,7 @@ BFS(G, s)
 		dist[v] = +∞;
 	}
 	
+	dist[s] = 0;
 	Q = new_queue(Q);
 	enqueue(Q, s);
 	
