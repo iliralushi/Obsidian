@@ -6,7 +6,7 @@ Un vettore è una grandezza che è definita attraverso un modulo e una direzione
 Uno scalare è una grandezza definita attraverso un numero.
 - La massa di un oggetto è un esempio di grandezza scalare.
 
-**NOTAZIONE USATA**
+**NOTAZIONE**
 - Vettore: **F**.
 - Intensità o modulo di un vettore: I**F**I.
 - Scalare: m (non in grassetto).
@@ -20,16 +20,16 @@ Moltiplicare o dividere un vettore per uno scalare equivale a moltiplicare/divid
 **TROVARE COMPONENTI CARTESIANE**
 Se dobbiamo i dati di un vettore (come per il vettore somma) dobbiamo trovare prima le coordinate X ed Y, poi il modulo ed infine la sua direzione.
 
-- **COORD. X**: Dato che `sin = opp/hyp` la formula è `mod.vettore * sin(°)`.
-- **COORD. Y**: Dato che `cos = adj/hyp` la formula è `mod.vettore * cos(°)`.
-- **MODULO**: `sqrt(Coord.X^2 + Coord.Y^2)`.
+- **COORD. X**: Dato che `sin = opp/hyp` la formula è `v * sin(°)`.
+- **COORD. Y**: Dato che `cos = adj/hyp` la formula è `v * cos(°)`.
+- **MODULO**: `sqrt(X^2 + Y^2)`.
 - **DIREZIONE**: tan per trovare l'angolo, quindi `° = sin/cos` e poi `arctan(°)`.
 
 **POSIZIONE**
 La posizione **r** di un oggetto puntiforme indica il punto nello spazio in cui è collocato rispetto ad un punto di riferimento.
 
 **SPOSTAMENTO**
-Lo spostamento rappresenta la variazione di posizione di un oggetto puntiforme. Esso dipende soltanto dalla posizione finale rf e da quella iniziale ri.
+Lo spostamento è un **VETTORE** rappresenta la variazione di posizione di un oggetto puntiforme. Esso dipende soltanto dalla posizione finale rf e da quella iniziale ri.
 - `△r = rf - ri.`
 
 **VELOCITA**
