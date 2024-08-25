@@ -17,6 +17,7 @@ Quando un oggetto si muove in moto di caduta libera intendiamo che l'oggetto non
 **Moto Armonico Semplice**
 Quando un oggetto si muove in moto armonico semplice intendiamo che all'oggetto è applicata una forza di richiamo che è una forza che è sempre diretta in un punto di equilibrio stabile. Le formule seguono la legge di Hooke (forza elastica) che segue lo stesso principio
 del moto armonico semplice; l'oggetto deve tornare nello stesso punto.
+- A è l'ampiezza del moto, ovvero il massimo spostamento dall'origine.
 - $ω$ $=$ $2$ $×$ $π$ $×$ $f$
 - $x$ $=$ $A$ $×$ $cos(ωt)$
 - $v$ $=$ $-A$ $×$ $ω$ $×$ $sin(ωt)$

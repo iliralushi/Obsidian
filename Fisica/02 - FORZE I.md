@@ -3,7 +3,7 @@ La forza è un vettore che esprime l'interazione tra due corpi. Possono essere f
 
 **Prima Legge della Dinamica**
 La prima legge della dinamica stabilisce che se un corpo puntiforme è soggetto a forze nulle o che risultano nulle allora la sua velocità rimane invariata. Questa legge è vera soltanto nei sistemi di riferimento inerziali, dove NON abbiamo:
-1) **ACCELERAZIONI**: In un sistema inerziale non ci sono accelerazioni; il moto circolare non è un sistema inerziale proprio perchè è presente la forza centripeta.
+1) **ACCELERAZIONI**: In un sistema inerziale non ci sono accelerazioni; il moto circolare non è un sistema inerziale proprio perchè è presente la forza centrifuga.
 2) **MODIFICHE DELLE LEGGI**: Le leggi della Dinamica su un sistema di riferimento inerziale sono valide senza alcuna modifica.
 3) **FORZE APPARENTI**: Sono forze che vengono percepite nei sistemi di riferimento NON inerziali; queste forze vengono dette "non reali" perchè non derivano da interazioni tra corpi, però sono forze più che reali dato che chi è all'interno del sistema di riferimento percepisce queste forze.
 
