@@ -45,15 +45,62 @@ Lo scopo generale delle simulazioni è stimare la probabilità di un evento.
 
 **Teorema**
 Dato un evento E con probabilità P e una X che rappresenta il numero di volte che l'evento si presenta in N prove. Abbiamo che:
-$lim(n)→∞$ $X/N = P$
+- $lim(n)→∞:$ $X/N = P$
 
 **Funzione Replicate**
-È un loop. Ci permette di ripetere indefinite volte una espressione expr. Inoltre ha un parametro N che indica quante volte ripeterla.
+È un loop. Ci permette di ripetere indefinite volte una espressione expr. Inoltre ha un parametro N che indica quante volte ripeterla. Le parentesi graffe indicano un blocco
+di testo; solo il risultato dell'ultima istruzione viene salvato nel vettore via replicate.
 
 ``` R
-outcome <- replicate(n, {
-		# blocco di testo
-		# blocco di testo
+event <- replicate(n, {
+		# L'ESPERIMENTO VA QUI
+		# L'ESPERIMENTO VA QUI
 	})
+	
+mean(event) / 100
 ```
+
+**Probabilità Condizionale**
+Dati due eventi A e B, con la probabilità di B non nulla si dice probabilità condizionale la probabilità che l'evento A accada dato l'evento B. In formula, abbiamo:
+- $P(A|B)$ $=$ $P(A∩B)$ / $P(B)$
+- $P((A∩B)|B)$ $=$ $P(A|B)$
+- $P((A∪B)|B)$ $=$ $1$
+
+**Eventi Indipendenti**
+Dati due eventi A e B, un evento la cui la probabilità di accadere NON viene influenzata dal fatto che un altro evento sia accaduto. In formula quindi, se due eventi sono indipendenti:
+1) $P(A∩B)$ $=$ $P(A)$ $×$ $P(B)$
+2) $P(A|B)$ $=$ $P(A)$
+3) $P(B|A)$ $=$ $P(B)$
+
+**Eventi Mutualmente Indipendenti**
+Un insieme di eventi si dicono mutualmente indipendenti se la loro probabilità di accadere NON è influenzata da nessun evento presente nell'insieme. In forumula abbiamo:
+- $P(Ai1∩Ai2∩⋯∩AiN)$ $=$ $P(Ai1)$ $×$ $P(Ai2)$ $×$ $…$ $×$ $P(AiN)$
+
+**Simulare la Probabilità Condizionale**
+1) Stimiamo la probabilità dell'evento $(A ∩ B)$ usando la funzione replicate per ripetere il blocco di testo e sample per creare il nostro esperimento. Assegniamo ad una variabile la media del nostro risultato.
+2) Svolgiamo gli stessi passaggi per l'evento $B$.
+3) Svolgiamo l'operazione $P(A∩B)$ $/$ $P(B)$.
+
+**Legge della Probabilità Totale**
+La legge della probabilità totale ci consente di trovare la probabilità complessiva di un evento A dividendolo in più casi, detti partizioni dello spazio degli eventi. Questo evento che chiamiamo B rappresenta uno scenario esclusivo, coprendo tutte le possibili situazioni in cui
+l'evento A può verificarsi. 
+
+La probabilità complessiva viene quindi trovata sommando tutte le probabilità condizionate A dato ciascun B, moltiplicato per ogni probabilità B. In formula:
+- $P(A)$ $=$ $P(A$ $∩$ $B)$ + $P(A$ $∩$ $!B)$ $=$ $P(A$$|$$B)$$P(B)$ $+$ $P(A$$|$$!B)$$P(!B)$.
+###### **ESISTE UNA VERSIONE GENERALE PER N PARTIZIONI DELL'EVENTO!**
+
+**Legge di Bayes**
+La legge di Bayes è una conseguenza della probabilità condizionale. Ci permette di aggiornare la nuova probabilità di un evento tenendo conto di nuove informazioni. In pratica ci aiuta a trovare la probabiltà condizionata inversa. In formula:
+- $P(A)$ $=$ $P(B|A)P(A)$ $/$ $P(B)$ $=$ $P(B|A)P(A)$ $/$ $P(B|A)P(A)$ $+$ $P(B|!A)P(!A)$
+###### **ESISTE UNA VERSIONE GENERALE PER N PARTIZIONI DELL'EVENTO!**
+
+**Regola del Prodotto**
+Se ci sono $m$ modi per fare una cosa, e per ciascuno di questi $m$ modi esistono altri $n$ modi per fare una seconda cosa, allora esistono $m$ $×$ $n$ modi per fare entrambe le cose.
+
+**Combinazione Semplice**
+Il numero di modi per scegliere $k$ oggetti distinti da un insieme $N$ è dato da:
+$\binom{n}{k}$ $=$ $n!$ $/$ $k!(n - k!)$
+
+Per svolgerlo in R usiamo la funzione `choose(n, k).`
+
 
