@@ -35,5 +35,5 @@ Il modulo è costante, mentre la direzione cambia, quindi c'è una forza non nul
 - $a$ $rad.$ $=$ $rw^2$ $=$ $ωv$
 
 **Forza Centripeta**
-È una forza apparente che tiene il corpo in rotazione uniforme. È quindi costante in modulo e diretta verso il centro.
+È la forza reale che tiene il corpo in rotazione uniforme. È quindi costante in modulo e diretta verso il centro. La forza centrifuga invece è la forza apparente che si manifesta in un sistema non inerziale.
 - $F$ $=$ $m$ $×$ $v^2$ $/$ $r$
