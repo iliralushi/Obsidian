@@ -30,9 +30,9 @@ L'energia potenziale elastica viene data dal lavoro compiuto per comprimere o di
 
 **Teorema dell'Energia Cinetica cont.**
 In caso di forze non conservative allora il teorema dell'energia cinetica viene leggermente modificato per tener conto di queste forze.
-- $ΔE$ $=$ $Lcons$ $+$ $Lnoncons$
-- $ΔE$ $=$ $-ΔU$ $+$ $Lnoncons$
-- $ΔE$ $=$ $K$ $+$ $Umecc$
+- $ΔEcin$ $=$ $Lcons$ $+$ $Lnoncons$
+- $ΔEcin$ $=$ $-ΔU$ $+$ $Lnoncons$
+- $ΔEcin$ $=$ $K$ $+$ $Umecc$
 - $ΔEmecc$ $=$ $Lnoncons$
 
 **Teorema di Conservazione dell'Energia**
