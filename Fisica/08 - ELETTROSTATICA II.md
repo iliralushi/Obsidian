@@ -25,7 +25,7 @@ Un condensatore è un dispositivo che immagazzina energia potenziale elettrica i
 - $Q$ $∝$ $ΔV$
 
 **Formule Condensatori**
-- $σ$ $=$ $E$ $×$ $e0$
+- $σ$ $=$ $Q$ $×$ $A$
 - $C$ $=$ $e0$ $×$ $A$ $/$ $d$
 - $ΔV$ $=$ $E$ $×$ $d$ $=$ $σ$ $×$ $d$ $/$ $e0$ $=$ $Q$ $×$ $d$ $/$ $e0$ $×$ $A$
 - $Q$ $=$ $C$ $×$ $ΔV$ $=$  $e0$ $×$ $A$ $×$ $ΔV$ $/$ $d$
