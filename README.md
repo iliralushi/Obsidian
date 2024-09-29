@@ -1,1 +1,1 @@
-![[goat.jpeg]]
+![goat](goat.jpeg)
