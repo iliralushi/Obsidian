@@ -1,4 +1,4 @@
-**ESAMI DA SOLO**
+aasdasd**ESAMI DA SOLO**
 1) Algoritmi e Strutture Dati - `deadline: ???`
 2) Programmazione ad Oggetti - `deadline: metà ottobre.`
 3) Sistemi Artificiali - `deadline: inizio novembre.`

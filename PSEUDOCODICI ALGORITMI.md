@@ -13,7 +13,7 @@ BinarySearch(A, i, j, key)
 		
 	if (A[k] > key) then
 		return BinarySearch(A, i, k-1, key)
-	else
+	elseddeewcwòleoc *beiuc*
 		return BinarySearch(A, k+1, j, key)
 }
 
