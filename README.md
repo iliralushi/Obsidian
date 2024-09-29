@@ -1,9 +1,29 @@
-![Counter Strike](https://static.wikia.nocookie.net/leagueoflegends/images/9/9b/Jax_Counter_Strike.png/revision/latest?cb=20230929221107)
+[![Rearm icon](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Rearm_icon.png/revision/latest?cb=20111006074052)
 
-**Active:** **Jax** enters _Evasion_ for 2 seconds: a defensive stance that causes him to [![Jax Counter Strike old](https://static.wikia.nocookie.net/leagueoflegends/images/6/62/Jax_Counter_Strike_old.png/revision/latest/scale-to-width-down/20?cb=20171223030746)](https://leagueoflegends.fandom.com/wiki/Attack_effects#Parrying) [dodge](https://leagueoflegends.fandom.com/wiki/Attack_effects#Parrying) all incoming non- [![Turret icon](https://static.wikia.nocookie.net/leagueoflegends/images/8/82/Turret_icon.png/revision/latest/scale-to-width-down/20?cb=20180701054101)](https://leagueoflegends.fandom.com/wiki/Turret) [turret](https://leagueoflegends.fandom.com/wiki/Turret) basic attacks and take 25% reduced damage from all [area of effect](https://leagueoflegends.fandom.com/wiki/Area_of_effect "Area of effect") abilities from [![Champion icon](https://static.wikia.nocookie.net/leagueoflegends/images/2/25/Champion_icon.png/revision/latest/scale-to-width-down/20?cb=20181122022630)](https://leagueoflegends.fandom.com/wiki/Champion) [champions](https://leagueoflegends.fandom.com/wiki/Champion).  
-  
-_Counter Strike_ can be recast after 1 second, and does so automatically after the duration.
+](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Rearm_icon.png/revision/latest?cb=20111006074052)
 
-**Recast:** **Jax** deals magic damage to nearby enemies, with the **total** damage increased by 20% for each attack dodged, up to a 100% increase, and [![Stun icon](https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940)](https://leagueoflegends.fandom.com/wiki/Stun) [stuns](https://leagueoflegends.fandom.com/wiki/Stun) them for 1 second.
+[
+
+](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Rearm_icon.png/revision/latest?cb=20111006074052)
+
+**Ability**  
+[No Target](https://dota2.fandom.com/wiki/Abilities#No_Target "Abilities") / [Channeled](https://dota2.fandom.com/wiki/Channeled "Channeled")
+
+**Affects**  
+Self
+
+CHANNELED - Resets the cooldown on Tinker's abilities.
+
+**[Cast Animation](https://dota2.fandom.com/wiki/Cast_Animation "Cast Animation"):** 0+0
+
+**Channel Time:** 2.75/2/1.25
+
+[![Cooldown symbol](https://static.wikia.nocookie.net/dota2_gamepedia/images/b/b7/Cooldown_symbol.png/revision/latest?cb=20180323111726)](https://dota2.fandom.com/wiki/Cooldown "Cooldown")
+
+ 7/6/5
+
+[![Mana symbol](https://static.wikia.nocookie.net/dota2_gamepedia/images/f/f3/Mana_symbol.png/revision/latest?cb=20180323111807)](https://dota2.fandom.com/wiki/Mana "Mana")
+
+ 100/150/200 ([![Talent](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Talent_tree_symbol.png/revision/latest/scale-to-width-down/17?cb=20230824194818)](https://dota2.fandom.com/wiki/Talents "Talent") 92/138/184)
 
 ![goat](goat.jpeg)
