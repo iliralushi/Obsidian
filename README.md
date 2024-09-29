@@ -1,3 +1,5 @@
+![goat](goat.jpeg)
+
 ![Black Hole icon](https://static.wikia.nocookie.net/dota2_gamepedia/images/b/b8/Black_Hole_icon.png/revision/latest?cb=20111005114800)
 
 **Black Hole**
@@ -24,5 +26,3 @@ Enemies
 
 [![Cooldown symbol](https://static.wikia.nocookie.net/dota2_gamepedia/images/b/b7/Cooldown_symbol.png/revision/latest?cb=20180323111726)](https://dota2.fandom.com/wiki/Cooldown "Cooldown")180/170/160
 [![Mana symbol](https://static.wikia.nocookie.net/dota2_gamepedia/images/f/f3/Mana_symbol.png/revision/latest?cb=20180323111807)](https://dota2.fandom.com/wiki/Mana "Mana") 300/400/500
-
-![goat](goat.jpeg)
