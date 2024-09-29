@@ -1,11 +1,5 @@
 [![Rearm icon](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Rearm_icon.png/revision/latest?cb=20111006074052)
 
-](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Rearm_icon.png/revision/latest?cb=20111006074052)
-
-[
-
-](https://static.wikia.nocookie.net/dota2_gamepedia/images/c/cd/Rearm_icon.png/revision/latest?cb=20111006074052)
-
 **Ability**  
 [No Target](https://dota2.fandom.com/wiki/Abilities#No_Target "Abilities") / [Channeled](https://dota2.fandom.com/wiki/Channeled "Channeled")
 
