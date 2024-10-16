@@ -1,6 +1,3 @@
-PW PER ACCEDERE AL MOODLE
-- dieMiephie3b
-
 ifconfig <nome rete> <ip>/24 - aggiunge indirzzo ip è un comando temporaneo! unap volta spenta la macchina questi ip si cancellano
 ifconfig <nome rete> fa vedere dati quali l'indirizzo mac 
 ip 
@@ -50,3 +47,8 @@ iface br0 inet static
 	address 0.0.0.0
 
 Indirizzo ip 0.0.0.0 = non assegnare un indirizzo ip. Dipende dalla versione del kernel ci vuole come non ci vuole. Assegnazione dummy. Posso ovviamente assegnarli un indirizzo.
+
+Uno dei comandi per vedere le impostazioni di routing è route con il -n per darmi informazioni a basso livello. Per ottenere l'indirizzo di rete a partire dalla netmask bisogna fare l'and tra tutti i bit dell'indirizzo di rete. Se ho l'indiirzzo gateaway un indirizzo ip dummy allora vuol dire che possiamo usare il protocollo H2N. Il primo pacchetto inviato è l'arp request perchè l'host cerca di trovare la regola da utilizzare per trovare quell'indirizzo.
+
+Sysctl è un comando utilizzato per modificare parametri del kernel. È temporaneo, per modificarlo permanentemente usiamo nano /etc/systcl.conf. Il comando -p riconfigura il kernel senza dover riavviare il pc.
+
